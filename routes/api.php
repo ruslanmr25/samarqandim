@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsImageController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +24,7 @@ Route::apiResource("news-categories", NewsCategoryController::class);
 
 
 Route::apiResource("news", NewsController::class);
+
+Route::post("/news/upload", [NewsImageController::class, "store"]);
 
 //

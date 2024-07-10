@@ -15,6 +15,8 @@ class NewsController extends Controller
     public function index()
     {
 
+        return $this->success();
+
 
         // return News::paginate(10);
     }

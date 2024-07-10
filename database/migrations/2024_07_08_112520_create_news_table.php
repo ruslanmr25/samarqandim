@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId("category_id")->references("id")->on("news_categories");
-            $table->string("title_uz")->nullable();
-            $table->string("title_en")->nullable();
-            $table->string("title_ru")->nullable();
-            $table->string("title_kr")->nullable();
+            $table->string("title_uz",1000)->nullable();
+            $table->string("title_en",1000)->nullable();
+            $table->string("title_ru",1000)->nullable();
+            $table->string("title_kr",1000)->nullable();
             $table->longText("body_uz")->nullable();
             $table->longText("body_en")->nullable();
             $table->longText("body_ru")->nullable();

@@ -13,7 +13,8 @@ class NewsCategoryController extends Controller
      */
     public function index()
     {
-        
+
+
     }
 
 

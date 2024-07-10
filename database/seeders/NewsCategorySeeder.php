@@ -14,7 +14,7 @@ class NewsCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            "about life",
+            "old",
             "about science",
             "about nothing"
         ];
