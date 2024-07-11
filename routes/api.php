@@ -27,4 +27,7 @@ Route::apiResource("news", NewsController::class);
 
 Route::post("/news/upload", [NewsImageController::class, "store"]);
 
+
+
+
 //

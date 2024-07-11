@@ -8,13 +8,15 @@ use App\Http\Requests\UpdateNewsCategoryRequest;
 
 class NewsCategoryController extends Controller
 {
+
+    // only spadmin
     /**
+     *
+     *
      * Display a listing of the resource.
      */
     public function index()
     {
-
-
     }
 
 

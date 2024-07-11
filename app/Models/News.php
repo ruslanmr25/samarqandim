@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Filter\BaseFilter;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +27,16 @@ class News extends Model
         'views',
         'deletes_at'
     ];
+
+    protected $hidden = [
+        'updated_at', 'deletes_at'
+    ];
+
+
+    public function scopeFilter(Builder $builder, BaseFilter $filter)
+    {
+        $filter->apply($builder);
+    }
 
 
 
