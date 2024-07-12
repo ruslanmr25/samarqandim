@@ -20,9 +20,6 @@ class NewsController extends Controller
     public function index(NewsFilter $newsFilter)
     {
 
-        // return $this->success();
-
-
         return new NewsCollection(News::filter($newsFilter)->paginate(10));
     }
 
@@ -42,9 +39,10 @@ class NewsController extends Controller
      *
      * all
      */
-    public function show(News $news)
+    public function show($news, NewsFilter $filter)
     {
-        //
+
+        News::FindByLang($news, $filter);
     }
 
 

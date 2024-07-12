@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NewsImageController;
@@ -27,6 +28,10 @@ Route::apiResource("news", NewsController::class);
 
 Route::post("/news/upload", [NewsImageController::class, "store"]);
 
+
+//Menu section
+
+Route::apiResource("menus", MenuController::class);
 
 
 

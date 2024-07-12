@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Http\Filter\BaseFilter;
+use App\Http\Traits\ExtraModelMethods;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    use HasFactory;
+    use HasFactory,ExtraModelMethods;
 
     public $timestamps = false;
 
@@ -31,16 +32,6 @@ class News extends Model
     protected $hidden = [
         'updated_at', 'deletes_at'
     ];
-
-
-    public function scopeFilter(Builder $builder, BaseFilter $filter)
-    {
-        $filter->apply($builder);
-    }
-
-
-
-
 
 
     public function category()

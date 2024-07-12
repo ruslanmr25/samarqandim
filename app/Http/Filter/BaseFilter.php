@@ -31,6 +31,10 @@ class BaseFilter
 
         $this->setLanguage();
 
+        if (method_exists($this, 'primary')) {
+            $this->primary();
+        }
+
         foreach ($this->request->all() as $key => $value) {
 
             if (method_exists($this, $key)) {
@@ -38,6 +42,7 @@ class BaseFilter
                 $this->$key($value);
             }
         }
+        $this->builder->select($this->setLanguage());
 
 
         return $this->builder;
@@ -48,10 +53,7 @@ class BaseFilter
     {
 
 
-
-    
-
-        return $this->builder->select(array_merge($this->generalColumns, $this->ColumnsDependOnLang[$this->lang]));
+        return array_merge($this->generalColumns, $this->ColumnsDependOnLang[$this->lang]);
     }
 }
 
