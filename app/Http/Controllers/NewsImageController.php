@@ -12,5 +12,16 @@ class NewsImageController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file("image");
+
+
+        $fileExtenson = $file->extension();
+
+
+        // return $fileOriginalName;
+
+
+        $path = $request->file('image')->storePublicly("news/images");
+        return $path;
     }
 }

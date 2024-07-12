@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
             NewsCategorySeeder::class,
             // NewsSeeder::class,
             MenuSeeder::class,
+            PageSeeder::class
         ]);
+
+
+
     }
 }

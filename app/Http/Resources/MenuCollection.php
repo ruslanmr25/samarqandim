@@ -15,7 +15,11 @@ class MenuCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'data'=>$this->collection
+            "success" => true,
+            "message" => "The operation was done successfully!",
+            "result" => [
+                'data' => $this->collection
+            ]
         ];
     }
 }

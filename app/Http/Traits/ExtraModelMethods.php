@@ -13,10 +13,10 @@ trait ExtraModelMethods
         $filter->apply($builder);
     }
 
-    public static function FindByLang($id, BaseFilter $filter)
+    public static function FindByLang($id, BaseFilter $filter, $column = "id")
     {
 
-        return self::findOrFail($id, $filter->setLanguage());
+        return self::where($column, $id)->firstOrFail($filter->setLanguage());
     }
 }
 

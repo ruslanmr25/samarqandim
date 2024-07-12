@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
 
-    use HasFactory,ExtraModelMethods;
+    use HasFactory, ExtraModelMethods;
 
     protected $fillable = [
         'name_uz',
@@ -37,7 +37,7 @@ class Menu extends Model
 
 
 
-
+    //own relationships
     public function children()
     {
         return $this->hasMany(Menu::class, 'parent_id');
@@ -46,5 +46,10 @@ class Menu extends Model
     public function parent()
     {
         return $this->belongsTo(Menu::class, 'parent_id');
+    }
+    //forein relation
+    public function page()
+    {
+        return $this->hasOne(Page::class);
     }
 }

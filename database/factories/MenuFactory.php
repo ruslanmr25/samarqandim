@@ -16,7 +16,7 @@ class MenuFactory extends Factory
      */
     public function definition(): array
     {
-        $level = $this->faker->randomElement([1, 2, 2, 3, 3, 3]);
+        $level = $this->faker->randomElement([2, 2, 3, 3, 3]);
         return [
             "name_uz" => $this->faker->words(5, true),
             "name_en" => $this->faker->words(5, true),
