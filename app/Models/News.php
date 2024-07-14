@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    use HasFactory,ExtraModelMethods;
+    use HasFactory, ExtraModelMethods;
 
     public $timestamps = false;
 
