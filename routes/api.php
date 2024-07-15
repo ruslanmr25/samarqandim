@@ -23,8 +23,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-Route::apiResource("news-categories", NewsCategoryController::class);
+//you have pay attention to the routes in  next step
+Route::apiResource("news-categories", NewsCategoryController::class)
+    ->except(['show']);
 
 
 Route::apiResource("news", NewsController::class);

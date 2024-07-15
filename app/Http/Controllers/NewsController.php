@@ -20,7 +20,12 @@ class NewsController extends Controller
     public function index(NewsFilter $newsFilter)
     {
 
-        return new NewsCollection(News::filter($newsFilter)->paginate(10));
+        return new NewsCollection(
+            News::filter($newsFilter, ['body', 'status'])
+                ->latest()
+                ->with('images')
+                ->paginate($newsFilter->perPage)
+        );
     }
 
 
@@ -31,7 +36,11 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
-        //
+        News::create($request->all())
+            ->images()
+            ->create(['path' => $request->path]);
+
+        return $this->success();
     }
 
     /**
@@ -42,7 +51,10 @@ class NewsController extends Controller
     public function show($news, NewsFilter $filter)
     {
 
-        News::FindByLang($news, $filter);
+        return
+            $this->success(
+                new NewsResource(News::FindByLang($news, $filter)->load('images'))
+            );
     }
 
 
@@ -53,7 +65,16 @@ class NewsController extends Controller
      */
     public function update(UpdateNewsRequest $request, News $news)
     {
-        //
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////
+        ////You must ask that when admin update the news , will it be all property given you?////
+        /////////////////////////////////////////////////////////////////////////////////////////
+
+
+        $news->update($request->all());
+
+        return $this->success();
     }
 
     /**

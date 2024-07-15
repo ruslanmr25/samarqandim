@@ -6,9 +6,10 @@ use App\Http\Filter\SlideFilter;
 use App\Models\Slide;
 use App\Http\Requests\StoreSlideRequest;
 use App\Http\Requests\UpdateSlideRequest;
+use App\Http\Resources\SlideCollection;
 use App\Http\Resources\SlideResource;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+
 
 class SlideController extends Controller
 {
@@ -19,7 +20,7 @@ class SlideController extends Controller
     {
         $slides = Slide::filter($filter)->get();
 
-        return SlideResource::collection($slides);
+        return new SlideCollection($slides);
     }
 
     /**

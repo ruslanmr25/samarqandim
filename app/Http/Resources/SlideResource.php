@@ -16,12 +16,11 @@ class SlideResource extends JsonResource
     {
         return [
 
-            'data' => [
 
-                'id' => $this->id,
-                'title' => $this->title_uz ?? $this->title_kr ?? $this->title_ru ?? $this->title_en,
-                'path' => $this->path,
-            ]
+            'id' => $this->id,
+            'title' => $this->title_uz ?? $this->title_kr ?? $this->title_ru ?? $this->title_en,
+            'path' => $this->path,
+
         ];
     }
 }

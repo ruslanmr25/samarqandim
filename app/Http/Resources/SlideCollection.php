@@ -15,7 +15,13 @@ class SlideCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            
-        ]
+            "success" => true,
+            "message" => "The operation was done successfully",
+            "result" => [
+
+                'data' => $this->collection
+            ]
+
+        ];
     }
 }

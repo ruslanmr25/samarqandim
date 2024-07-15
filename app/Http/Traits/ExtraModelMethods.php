@@ -7,10 +7,10 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 
 trait ExtraModelMethods
 {
-    public function scopeFilter(Builder $builder, BaseFilter $filter)
+    public function scopeFilter(Builder $builder, BaseFilter $filter, array $unnecessaryColumns = [])
     {
 
-        $filter->apply($builder);
+        $filter->apply($builder, $unnecessaryColumns);
     }
 
     public static function FindByLang($id, BaseFilter $filter, $column = "id")
@@ -19,5 +19,3 @@ trait ExtraModelMethods
         return self::where($column, $id)->firstOrFail($filter->setLanguage());
     }
 }
-
-//

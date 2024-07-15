@@ -12,7 +12,13 @@ class News extends Model
 {
     use HasFactory, ExtraModelMethods;
 
-    public $timestamps = false;
+
+
+    /////////////////////////////////////////////////////////////////
+    //// Do not forget about do this true after you add old news ////
+    /////////////////////////////////////////////////////////////////
+
+    // public $timestamps = true;
 
     protected $fillable = [
         'category_id',
