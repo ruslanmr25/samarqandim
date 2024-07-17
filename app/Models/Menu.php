@@ -22,17 +22,16 @@ class Menu extends Model
         'path'
     ];
 
+
+
+
     public function scopeFilter(Builder $builder, BaseFilter $filter)
     {
 
         $filter->apply($builder);
     }
 
-    public static function FindByLang($id, BaseFilter $filter)
-    {
 
-        return self::findOrFail($id, $filter->setLanguage());
-    }
 
 
 

@@ -10,7 +10,7 @@ class Page extends Model
 {
     use HasFactory, ExtraModelMethods;
 
-    protected $fillabe = [
+    protected $fillable = [
         'menu_id',
         'title_uz',
         'title_en',

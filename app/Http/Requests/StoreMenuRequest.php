@@ -22,10 +22,10 @@ class StoreMenuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nameEn' => 'required|string',
-            'nameUz' => 'required|string',
-            'nameRu' => 'required|string',
-            'nameKr' => 'required|string',
+            // 'nameEn' => 'required|string',
+            // 'nameUz' => 'required|string',
+            // 'nameRu' => 'required|string',
+            // 'nameKr' => 'required|string',
             'level' => 'required|integer',
             'parentId' => 'required_unless:level,1|exists:menus,id',
             'path' => 'required'

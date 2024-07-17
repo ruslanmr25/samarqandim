@@ -38,7 +38,10 @@ Route::post("/upload/{type}", [FileUploadController::class, "store"]);
 
 //Menu section
 
-Route::apiResource("menus", MenuController::class);
+Route::apiResource("menus", MenuController::class)
+->parameters([
+    'menus'=>'menus:path'
+]);
 
 
 Route::get("pages/{page:menu_id}", [PageController::class, 'show']);

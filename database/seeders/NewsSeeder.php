@@ -37,7 +37,7 @@ class NewsSeeder extends Seeder
                     $news->images()->create([
 
                         'path' => $value['image']['path'],
-                        'is_main' => true
+                       
                     ]);
                 }
             }

@@ -22,8 +22,7 @@ class StorePageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "menuId" => 'required',
-            "title_uz" => 'string',
+            "menuId" => 'required|exists:menus,id',
 
         ];
     }
@@ -31,8 +30,17 @@ class StorePageRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        if (isset($this->titleUz)) {
-            dd("yeah");
-        }
+        $this->merge([
+
+            'menu_id' => $this->menuId,
+            'title_uz' => $this->titleUz,
+            'title_en' => $this->titleEn,
+            'title_ru' => $this->titleRu,
+            'title_kr' => $this->titleKr,
+            'body_uz' => $this->bodyUz,
+            'body_en' => $this->bodyEn,
+            'body_ru' => $this->bodyRu,
+            'body_kr' => $this->bodyKr,
+        ]);
     }
 }

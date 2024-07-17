@@ -10,22 +10,17 @@ use App\Http\Resources\PageResource;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * Temporarly none
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorePageRequest $request)
     {
-        //
+
+        // return $request->all();
+        Page::create($request->all());
+        return $this->success();
     }
 
     /**
@@ -33,7 +28,9 @@ class PageController extends Controller
      */
     public function show($page, PageFilter $filter)
     {
-        return  new PageResource(Page::FindByLang($page, $filter, 'menu_id'));
+        return $this->success(
+            new PageResource(Page::FindByLang($page, $filter, 'menu_id'))
+        );
     }
 
     /**
