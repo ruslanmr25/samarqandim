@@ -41,7 +41,7 @@ class MenuController extends Controller
      */
     public function show($menu, MenuFilter $filter)
     {
-        $menu = Menu::FindByLang($menu, $filter,'path');
+        $menu = Menu::FindByLang($menu, $filter, 'path');
         return new MenuResource($menu->load("children"));
     }
 

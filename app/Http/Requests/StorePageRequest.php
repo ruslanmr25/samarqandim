@@ -23,6 +23,7 @@ class StorePageRequest extends FormRequest
     {
         return [
             "menuId" => 'required|exists:menus,id',
+            
 
         ];
     }

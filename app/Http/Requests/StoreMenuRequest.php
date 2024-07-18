@@ -28,7 +28,7 @@ class StoreMenuRequest extends FormRequest
             // 'nameKr' => 'required|string',
             'level' => 'required|integer',
             'parentId' => 'required_unless:level,1|exists:menus,id',
-            'path' => 'required'
+            'path' => 'required|unique:menus,path'
 
 
         ];

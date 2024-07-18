@@ -19,7 +19,7 @@ class MenuResource extends JsonResource
             "name" => $this->name_en ?? $this->name_kr ?? $this->name_ru ?? $this->name_uz,
             "level" => $this->level,
             "path" => $this->path,
-            "children" =>  new MenuCollection($this->whenLoaded("children"))
+            "children" =>   MenuResource::collection($this->whenLoaded("children"))
 
         ];
     }
