@@ -26,7 +26,7 @@ class UserPermissionController extends Controller
 
     /**
      * You must check target user is not spadmin
-     * @param \App\Http\Requests\ManagePermissionRequest $request
+     * @param \App\Http\Requests\ManagePermissionRequest     $request
      * @return mixed|\Illuminate\Http\JsonResponse
      */
     public function assignPermssion(ManagePermissionRequest $request)
