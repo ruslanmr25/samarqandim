@@ -9,22 +9,28 @@ use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
 use App\Http\Resources\MenuCollection;
 
+/**
+ * @group Menu
+ */
 class MenuController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get all menu that level 3
+     * @queryParam lang string No-example
+     * @queryParam level int No-example
+     * @queryParam withChildren bool
      *
-     *
-     * //all can show it
      */
     public function index(MenuFilter $filter)
     {
+
+
         return new MenuCollection(Menu::filter($filter)->get());
     }
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store Menu
      *
      * Only spaadmin
      */
@@ -36,20 +42,20 @@ class MenuController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *  Temporarly none
+     *  Get menu by path
+     *  @urlParam id int required The ID of the post
      */
     public function show($menu, MenuFilter $filter)
     {
         $menu = Menu::FindByLang($menu, $filter, 'path');
-        return new MenuResource($menu->load("children"));
+
+        return $this->resource(new MenuResource($menu->load("children")));
+        
     }
 
 
     /**
-     *
-     * only spadmin
-     * Update the specified resource in storage.
+     * Update Menu
      */
     public function update(UpdateMenuRequest $request, Menu $menu)
     {
@@ -59,8 +65,8 @@ class MenuController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     * only spadmin
+     * Delete menu
+     *
      */
     public function destroy(Menu $menu)
     {

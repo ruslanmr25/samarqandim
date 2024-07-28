@@ -4,6 +4,18 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @bodyParam titleEn optional string. No-example
+ * @bodyParam titleRu optional string. No-example
+ * @bodyParam titleKr optional string. No-example
+ * @bodyParam titleUz optional string. No-example
+ * @bodyParam bodyEn optional string. No-example
+ * @bodyParam bodyRu optional string. No-example
+ * @bodyParam bodyUz optional string. No-example
+ * @bodyParam bodyKr optional string. No-example
+ * @bodyParam path required string Main image path. No-example
+ * @bodyParam categoryId required int The type of news. No-example
+ */
 class StoreNewsRequest extends FormRequest
 {
     /**
@@ -22,7 +34,7 @@ class StoreNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'categoryId' => 'required|exists:news_categories,id',
+            'categoryId' => 'required|exists:news_categories,id|integer',
             'path' => 'required'
 
 

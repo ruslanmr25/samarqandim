@@ -8,12 +8,16 @@ use App\Http\Requests\StorePageRequest;
 use App\Http\Requests\UpdatePageRequest;
 use App\Http\Resources\PageResource;
 
+
+/**
+ * @group Page
+ */
 class PageController extends Controller
 {
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store  page
      */
     public function store(StorePageRequest $request)
     {
@@ -24,7 +28,8 @@ class PageController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get Page
+     *
      */
     public function show($page, PageFilter $filter)
     {
@@ -34,7 +39,7 @@ class PageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update Page
      */
     public function update(UpdatePageRequest $request, Page $page)
     {
@@ -42,10 +47,11 @@ class PageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete Page
      */
     public function destroy(Page $page)
     {
-        //
+        $page->delete();
+        return $this->success();
     }
 }

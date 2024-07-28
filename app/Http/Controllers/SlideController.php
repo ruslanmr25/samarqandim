@@ -10,11 +10,15 @@ use App\Http\Resources\SlideCollection;
 use App\Http\Resources\SlideResource;
 use Illuminate\Support\Facades\File;
 
-
+/**
+ * @group Slide
+ */
 class SlideController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *  Get all slides
+     * @queryParam status Sign of active or unactive Enum:1,0   No-example
+     * @queryParam lang Enum:uz,kr,en,ru
      */
     public function index(SlideFilter $filter)
     {
@@ -24,7 +28,7 @@ class SlideController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store new Slide
      */
     public function store(StoreSlideRequest $request)
     {
@@ -34,16 +38,9 @@ class SlideController extends Controller
         return $this->success();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    // public function show(Slide $slide)
-    // {
-    //     //
-    // }
 
     /**
-     * Update the specified resource in storage.
+     *  Update slide
      */
     public function update(UpdateSlideRequest $request, Slide $slide)
     {
@@ -52,12 +49,10 @@ class SlideController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete slide
      */
     public function destroy(Slide $slide)
     {
-        // You have to delete this slide's images
-
 
 
 

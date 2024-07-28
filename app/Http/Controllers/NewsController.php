@@ -9,14 +9,23 @@ use App\Data;
 use App\Http\Filter\NewsFilter;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\NewsResource;
+use Illuminate\Support\Facades\File;
 
+/**
+ * @group News
+ *
+ *
+ *
+ */
 class NewsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *Get all news
      *
-     * All can see
+     * @queryParam perPage int . No-example
+     * @queryParam lang string , in [uz,en,ru,kr]. No-example
      */
+
     public function index(NewsFilter $newsFilter)
     {
 
@@ -30,7 +39,7 @@ class NewsController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store news
      *
      * only signed admin
      */
@@ -44,9 +53,11 @@ class NewsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get News
      *
-     * all
+     * @queryParam lang string uz. No-example
+     *
+     *
      */
     public function show($news, NewsFilter $filter)
     {
@@ -60,30 +71,30 @@ class NewsController extends Controller
 
     /**
      *
-     * only signed admin
-     * Update the specified resource in storage.
+     * Update news
+     *
      */
     public function update(UpdateNewsRequest $request, News $news)
     {
 
-
-        /////////////////////////////////////////////////////////////////////////////////////////
-        ////You must ask that when admin update the news , will it be all property given you?////
-        /////////////////////////////////////////////////////////////////////////////////////////
-
-
+        // return $request->all();
         $news->update($request->all());
 
         return $this->success();
     }
 
     /**
-     * Remove the specified resource from storage.
+     *  Delete News
      *
-     * only signed admin
+     *
      */
     public function destroy(News $news)
     {
-        //
+        if (File::exists($news->images()->first()->path)) {
+
+            File::delete($news->images()->first()->path);
+        }
+        $news->delete();
+        return $this->success();
     }
 }

@@ -19,7 +19,8 @@ class Menu extends Model
         'name_ru',
         'name_kr',
         'level',
-        'path'
+        'path',
+        'parent_id'
     ];
 
 

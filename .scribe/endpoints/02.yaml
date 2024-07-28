@@ -1,0 +1,52 @@
+name: 'Upload File'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: 'api/upload/{type}'
+    metadata:
+      groupName: 'Upload File'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Summary of store'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      type:
+        name: type
+        description: 'in ["news", "slide"].'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      file:
+        name: file
+        description: 'Must be a file. Must not be greater than 4096 kilobytes.'
+        required: true
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters: []
+    fileParameters:
+      file: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

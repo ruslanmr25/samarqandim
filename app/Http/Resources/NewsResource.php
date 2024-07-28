@@ -25,7 +25,7 @@ class NewsResource extends JsonResource
             "body" => $this->whenNotNull($this->body_uz ?? $this->body_en ?? $this->body_kr ?? $this->body_ru),
             "status" => $this->whenNotNull($this->status),
             "views" => $this->views,
-            "path" => $this->whenLoaded("images", $this->images[0]->path??null),
+            "imagePath" => $this->whenLoaded("images", $this->images[0]->path ?? null),
             "createdAt" => $this->created_at,
 
 

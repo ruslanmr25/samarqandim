@@ -18,6 +18,11 @@ class MenuFilter extends BaseFilter
 
         return $this->builder->where('level', $this->request->level ?? 1);
     }
+
+    public function withChildren()
+    {
+        $this->builder->with('children');
+    }
 }
 
 

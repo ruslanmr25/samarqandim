@@ -4,6 +4,18 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @bodyParam menuId required int No-example
+ * @bodyParam titleEn optional string. No-example
+ * @bodyParam titleRu optional string. No-example
+ * @bodyParam titleKr optional string. No-example
+ * @bodyParam titleUz optional string. No-example
+ * @bodyParam bodyEn optional string. No-example
+ * @bodyParam bodyRu optional string. No-example
+ * @bodyParam bodyUz optional string. No-example
+ * @bodyParam bodyKr optional string. No-example
+ *
+ */
 class StorePageRequest extends FormRequest
 {
     /**
@@ -23,7 +35,7 @@ class StorePageRequest extends FormRequest
     {
         return [
             "menuId" => 'required|exists:menus,id',
-            
+
 
         ];
     }

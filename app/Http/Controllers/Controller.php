@@ -26,6 +26,20 @@ class Controller extends BaseController
         ], $statusCode);
     }
 
+    public function resource($data, $message = null, $statusCode = 200)
+    {
+
+        return response()->json([
+            "success" => true,
+            "message" => $message ?? $this->successMessage,
+            "result" => [
+                'data' =>
+                $data
+
+            ]
+        ], $statusCode);
+    }
+
     public function error($error = null, $statusCode = 401)
     {
 

@@ -45,17 +45,30 @@ class BaseFilter
             }
         }
 
+        $this->select($unnecessaryColumns);
+
         //select columns
-        $this->builder->select($this->setLanguage($unnecessaryColumns));
 
 
         return $this->builder;
     }
 
 
+    public function select($unnecessary)
+    {
+
+        if ($this->lang = 'all') {
+            $this->getAllColumn();
+        } else {
+            $this->builder->select($this->setLanguage($unnecessaryColumns));
+        }
+    }
+
+
 
     protected function addLangToColumn($unnecessary)
     {
+
 
 
         return array_map(
@@ -65,6 +78,11 @@ class BaseFilter
             array_diff($this->ColumnsDependOnLang, $unnecessary)
 
         );
+    }
+
+    public function getAllColumn()
+    {
+        $this->builder->select('*');
     }
 
 
@@ -77,6 +95,3 @@ class BaseFilter
         return array_merge($generalColumns, $this->addLangToColumn($unnecessary));
     }
 }
-
-
-//

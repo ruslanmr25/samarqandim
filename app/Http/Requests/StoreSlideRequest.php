@@ -4,6 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ *  * @bodyParam titleEn optional string. No-example
+ * @bodyParam titleRu optional string. No-example
+ * @bodyParam titleKr optional string. No-example
+ * @bodyParam titleUz optional string. No-example
+ * @bodyParam path string required The path of image. No-example
+ */
 class StoreSlideRequest extends FormRequest
 {
     /**

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FileUploadRequest;
 use Illuminate\Http\Request;
 
+
+/**
+ * @group Upload File
+ */
 class FileUploadController extends Controller
 {
 
@@ -13,9 +17,13 @@ class FileUploadController extends Controller
         "slide"
     ];
 
-    //only signed admin
 
-
+    /**
+     * Summary of store
+     *
+     * @urlParam type in ["news", "slide"]. No-example
+     *
+     */
     public function store(FileUploadRequest $request, $type)
     {
 
@@ -33,6 +41,8 @@ class FileUploadController extends Controller
         $path = "/storage/" . $file->store("/{$type}", "public");
 
 
-        return $path;
+        return $this->success([
+            'path' => $path
+        ]);
     }
 }

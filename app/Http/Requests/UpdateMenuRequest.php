@@ -4,6 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @bodyParam nameEn string optional
+ * @bodyParam nameUz string optional
+ * @bodyParam nameRU string optional
+ * @bodyParam nameKr string optional
+ *
+ */
 class UpdateMenuRequest extends FormRequest
 {
     /**
@@ -22,11 +29,7 @@ class UpdateMenuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'parentId' => 'required_unless:level,1|exists:menus,id',
-            // 'nameEn' => 'required|string',
-            // 'nameUz' => 'required|string',
-            // 'nameRu' => 'required|string',
-            // 'nameKr' => 'required|string',
+
             'level' => 'required|integer',
             'parentId' => 'required_unless:level,1|exists:menus,id',
             'path' => 'required'

@@ -1,0 +1,893 @@
+openapi: 3.0.3
+info:
+  title: 'New SamSU Project Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://192.168.0.108:8000'
+paths:
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: ''
+                  example: alias
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: 'IEj)-xt!7kfg:6z&b\W+'
+              required:
+                - username
+                - password
+      security: []
+  /api/menus:
+    get:
+      summary: 'Get all menu that level 3'
+      operationId: getAllMenuThatLevel3
+      description: ''
+      parameters:
+        -
+          in: query
+          name: lang
+          description: ''
+          example: null
+          required: false
+          schema:
+            type: string
+            description: ''
+            example: null
+        -
+          in: query
+          name: level
+          description: ''
+          example: null
+          required: false
+          schema:
+            type: integer
+            description: ''
+            example: null
+        -
+          in: query
+          name: withChildren
+          description: ''
+          example: false
+          required: false
+          schema:
+            type: boolean
+            description: ''
+            example: false
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'The operation was done successfully!'
+                  result:
+                    data:
+                      -
+                        id: 1
+                        name: News
+                        level: 1
+                        path: news
+                        children: []
+                      -
+                        id: 2
+                        name: Structure
+                        level: 1
+                        path: structure
+                        children:
+                          -
+                            id: 7
+                            name: 'aut neque culpa rerum repudiandae'
+                            level: 2
+                            path: paaaaaaaaaaaath
+                          -
+                            id: 8
+                            name: 'doloremque est laborum sit saepe'
+                            level: 2
+                            path: paaaaaaaaaaaath
+                          -
+                            id: 10
+                            name: 'dolor voluptatum aut fuga optio'
+                            level: 2
+                            path: paaaaaaaaaaaath
+                          -
+                            id: 15
+                            name: 'mollitia dolorem et sed possimus'
+                            level: 2
+                            path: paaaaaaaaaaaath
+                          -
+                            id: 17
+                            name: 'maiores nemo maxime molestiae harum'
+                            level: 2
+                            path: paaaaaaaaaaaath
+                          -
+                            id: 20
+                            name: 'odit perferendis voluptatem nulla placeat'
+                            level: 2
+                            path: paaaaaaaaaaaath
+                          -
+                            id: 23
+                            name: 'quia qui alias inventore rerum'
+                            level: 2
+                            path: paaaaaaaaaaaath
+                      -
+                        id: 3
+                        name: 'Scientific activity'
+                        level: 1
+                        path: scientific-activity
+                        children: []
+                      -
+                        id: 4
+                        name: 'International relations'
+                        level: 1
+                        path: international-relations
+                        children: []
+                      -
+                        id: 5
+                        name: 'Cultural and educational activity'
+                        level: 1
+                        path: cultural-and-educational-activity
+                        children: []
+                      -
+                        id: 6
+                        name: 'Financial activity'
+                        level: 1
+                        path: financial-activity
+                        children: []
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'The operation was done successfully!'
+                  result:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: News
+                            level: 1
+                            path: news
+                            children: []
+                          -
+                            id: 2
+                            name: Structure
+                            level: 1
+                            path: structure
+                            children:
+                              -
+                                id: 7
+                                name: 'aut neque culpa rerum repudiandae'
+                                level: 2
+                                path: paaaaaaaaaaaath
+                              -
+                                id: 8
+                                name: 'doloremque est laborum sit saepe'
+                                level: 2
+                                path: paaaaaaaaaaaath
+                              -
+                                id: 10
+                                name: 'dolor voluptatum aut fuga optio'
+                                level: 2
+                                path: paaaaaaaaaaaath
+                              -
+                                id: 15
+                                name: 'mollitia dolorem et sed possimus'
+                                level: 2
+                                path: paaaaaaaaaaaath
+                              -
+                                id: 17
+                                name: 'maiores nemo maxime molestiae harum'
+                                level: 2
+                                path: paaaaaaaaaaaath
+                              -
+                                id: 20
+                                name: 'odit perferendis voluptatem nulla placeat'
+                                level: 2
+                                path: paaaaaaaaaaaath
+                              -
+                                id: 23
+                                name: 'quia qui alias inventore rerum'
+                                level: 2
+                                path: paaaaaaaaaaaath
+                          -
+                            id: 3
+                            name: 'Scientific activity'
+                            level: 1
+                            path: scientific-activity
+                            children: []
+                          -
+                            id: 4
+                            name: 'International relations'
+                            level: 1
+                            path: international-relations
+                            children: []
+                          -
+                            id: 5
+                            name: 'Cultural and educational activity'
+                            level: 1
+                            path: cultural-and-educational-activity
+                            children: []
+                          -
+                            id: 6
+                            name: 'Financial activity'
+                            level: 1
+                            path: financial-activity
+                            children: []
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: News
+                            level:
+                              type: integer
+                              example: 1
+                            path:
+                              type: string
+                              example: news
+                            children:
+                              type: array
+                              example: []
+      tags:
+        - Menu
+      security: []
+    post:
+      summary: 'Store Menu'
+      operationId: storeMenu
+      description: 'Only spaadmin'
+      parameters: []
+      responses: {  }
+      tags:
+        - Menu
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nameEn:
+                  type: string
+                  description: ''
+                  example: voluptas
+                nameUz:
+                  type: string
+                  description: ''
+                  example: rerum
+                nameRu:
+                  type: string
+                  description: ''
+                  example: ea
+                nameKr:
+                  type: string
+                  description: ''
+                  example: saepe
+                level:
+                  type: integer
+                  description: ''
+                  example: 7
+                parentId:
+                  type: string
+                  description: 'This field is required unless <code>level</code> is in <code>1</code>.'
+                  example: null
+                path:
+                  type: string
+                  description: ''
+                  example: beatae
+              required:
+                - level
+                - path
+      security: []
+  '/api/menus/{id}':
+    get:
+      summary: 'Get menu by path'
+      operationId: getMenuByPath
+      description: '@urlParam id int required The ID of the post'
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for model [App\Models\Menu].'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for model [App\Models\Menu].'
+      tags:
+        - Menu
+      security: []
+    put:
+      summary: 'Update Menu'
+      operationId: updateMenu
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Menu
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                level:
+                  type: integer
+                  description: ''
+                  example: 17
+                parentId:
+                  type: string
+                  description: 'This field is required unless <code>level</code> is in <code>1</code>.'
+                  example: null
+                path:
+                  type: string
+                  description: ''
+                  example: id
+                nameEn:
+                  type: string
+                  description: optional
+                  example: numquam
+                nameUz:
+                  type: string
+                  description: optional
+                  example: ratione
+                nameRU:
+                  type: string
+                  description: optional
+                  example: et
+                nameKr:
+                  type: string
+                  description: optional
+                  example: quia
+              required:
+                - level
+                - path
+      security: []
+    delete:
+      summary: 'Delete menu'
+      operationId: deleteMenu
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Menu
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the menu.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/news:
+    get:
+      summary: 'Get all news'
+      operationId: getAllNews
+      description: ''
+      parameters:
+        -
+          in: query
+          name: perPage
+          description: .
+          example: null
+          required: false
+          schema:
+            type: integer
+            description: .
+            example: null
+        -
+          in: query
+          name: lang
+          description: ', in [uz,en,ru,kr].'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: ', in [uz,en,ru,kr].'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'The operation was done successfully!'
+                  result:
+                    data: []
+                    meta:
+                      currentPage: 1
+                      perPage: 15
+                      lastPage: 1
+                      total: 0
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'The operation was done successfully!'
+                  result:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        example: []
+                      meta:
+                        type: object
+                        properties:
+                          currentPage:
+                            type: integer
+                            example: 1
+                          perPage:
+                            type: integer
+                            example: 15
+                          lastPage:
+                            type: integer
+                            example: 1
+                          total:
+                            type: integer
+                            example: 0
+      tags:
+        - News
+      security: []
+    post:
+      summary: 'Store news'
+      operationId: storeNews
+      description: 'only signed admin'
+      parameters: []
+      responses: {  }
+      tags:
+        - News
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                categoryId:
+                  type: required
+                  description: 'int The type of news.'
+                  example: null
+                path:
+                  type: required
+                  description: 'string Main image path.'
+                  example: null
+                titleEn:
+                  type: optional
+                  description: string.
+                  example: null
+                titleRu:
+                  type: optional
+                  description: string.
+                  example: null
+                titleKr:
+                  type: optional
+                  description: string.
+                  example: null
+                titleUz:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyEn:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyRu:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyUz:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyKr:
+                  type: optional
+                  description: string.
+                  example: null
+      security: []
+  '/api/news/{id}':
+    get:
+      summary: 'Get News'
+      operationId: getNews
+      description: ''
+      parameters:
+        -
+          in: query
+          name: lang
+          description: uz.
+          example: null
+          required: false
+          schema:
+            type: string
+            description: uz.
+            example: null
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for model [App\Models\News].'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for model [App\Models\News].'
+      tags:
+        - News
+      security: []
+    put:
+      summary: 'Update news'
+      operationId: updateNews
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - News
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                categoryId:
+                  type: optional
+                  description: 'int The type of news.'
+                  example: null
+                path:
+                  type: optional
+                  description: 'not null string Main image path.'
+                  example: null
+                titleEn:
+                  type: optional
+                  description: string.
+                  example: null
+                titleRu:
+                  type: optional
+                  description: string.
+                  example: null
+                titleKr:
+                  type: optional
+                  description: string.
+                  example: null
+                titleUz:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyEn:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyRu:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyUz:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyKr:
+                  type: optional
+                  description: string.
+                  example: null
+      security: []
+    delete:
+      summary: 'Delete News'
+      operationId: deleteNews
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - News
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the news.'
+        example: 13
+        required: true
+        schema:
+          type: integer
+  '/api/pages/{page_menu_id}':
+    get:
+      summary: 'Get Page'
+      operationId: getPage
+      description: ''
+      parameters: []
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Server Error'
+                properties:
+                  message:
+                    type: string
+                    example: 'Server Error'
+      tags:
+        - Page
+      security: []
+    parameters:
+      -
+        in: path
+        name: page_menu_id
+        description: 'The ID of the page menu.'
+        example: libero
+        required: true
+        schema:
+          type: string
+  /api/pages:
+    post:
+      summary: 'Store  page'
+      operationId: storePage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Page
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                menuId:
+                  type: required
+                  description: int
+                  example: null
+                titleEn:
+                  type: optional
+                  description: string.
+                  example: null
+                titleRu:
+                  type: optional
+                  description: string.
+                  example: null
+                titleKr:
+                  type: optional
+                  description: string.
+                  example: null
+                titleUz:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyEn:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyRu:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyUz:
+                  type: optional
+                  description: string.
+                  example: null
+                bodyKr:
+                  type: optional
+                  description: string.
+                  example: null
+      security: []
+  /api/slides:
+    get:
+      summary: 'Get all slides'
+      operationId: getAllSlides
+      description: ''
+      parameters:
+        -
+          in: query
+          name: status
+          description: 'Sign of active or unactive'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Sign of active or unactive'
+            example: null
+            enum:
+              - '1'
+              - '0'
+        -
+          in: query
+          name: lang
+          description: ''
+          example: en
+          required: false
+          schema:
+            type: string
+            description: ''
+            example: en
+            enum:
+              - uz
+              - kr
+              - en
+              - ru
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'The operation was done successfully'
+                  result:
+                    data: []
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'The operation was done successfully'
+                  result:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        example: []
+      tags:
+        - Slide
+      security: []
+    post:
+      summary: 'Store new Slide'
+      operationId: storeNewSlide
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Slide
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                path:
+                  type: string
+                  description: 'The path of image.'
+                  example: null
+                titleRu:
+                  type: optional
+                  description: string.
+                  example: null
+                titleKr:
+                  type: optional
+                  description: string.
+                  example: null
+                titleUz:
+                  type: optional
+                  description: string.
+                  example: null
+              required:
+                - path
+      security: []
+  '/api/slides/{id}':
+    put:
+      summary: 'Update slide'
+      operationId: updateSlide
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Slide
+      security: []
+    delete:
+      summary: 'Delete slide'
+      operationId: deleteSlide
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Slide
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the slide.'
+        example: 20
+        required: true
+        schema:
+          type: integer
+  '/api/upload/{type}':
+    post:
+      summary: 'Summary of store'
+      operationId: summaryOfStore
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Upload File'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must not be greater than 4096 kilobytes.'
+              required:
+                - file
+      security: []
+    parameters:
+      -
+        in: path
+        name: type
+        description: 'Optional parameter. in ["news", "slide"].'
+        required: true
+        schema:
+          type: string
+        examples:
+          omitted:
+            summary: 'When the value is omitted'
+            value: ''
+tags:
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Menu
+    description: ''
+  -
+    name: News
+    description: ''
+  -
+    name: Page
+    description: ''
+  -
+    name: Slide
+    description: ''
+  -
+    name: 'Upload File'
+    description: ''

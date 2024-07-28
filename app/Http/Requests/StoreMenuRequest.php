@@ -22,11 +22,11 @@ class StoreMenuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'nameEn' => 'required|string',
-            // 'nameUz' => 'required|string',
-            // 'nameRu' => 'required|string',
-            // 'nameKr' => 'required|string',
-            'level' => 'required|integer',
+            'nameEn' => 'string',
+            'nameUz' => 'string',
+            'nameRu' => 'string',
+            'nameKr' => 'string',
+            'level' => 'required|integer|min:1',
             'parentId' => 'required_unless:level,1|exists:menus,id',
             'path' => 'required|unique:menus,path'
 
@@ -43,6 +43,7 @@ class StoreMenuRequest extends FormRequest
             'name_uz' => $this->nameUz,
             'name_ru' => $this->nameRu,
             'name_kr' => $this->nameKr,
+            'parent_id' => $this->parentId
         ]);
     }
 }
