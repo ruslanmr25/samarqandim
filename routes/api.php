@@ -7,6 +7,8 @@ use App\Http\Controllers\SlideController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPermissionController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,8 +88,8 @@ Route::apiResource("slides", SlideController::class)->except(['show']);
 //                             User Rooutes                                                   //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+Route::get('users/personal-details',[UserController::class,'personalDetails']);
+Route::apiResource('users',UserController::class);
 
 
 
@@ -95,6 +97,18 @@ Route::apiResource("slides", SlideController::class)->except(['show']);
 //                             Permission Rooutes                                             //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('permissions/personal',[UserPermissionController::class,'getPermissions'])->middleware('auth:sanctum');
+Route::get('permissions/personal', [UserPermissionController::class, 'getPermissions'])->middleware('auth:sanctum');
+
+Route::apiResource('permissions', PermissionController::class)->only('index');
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                           Managa user Permission Rooutes                                   //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Route::post('permissions/assign', [UserPermissionController::class, 'assignPermssion']);
+Route::post('permissions/remove', [UserPermissionController::class, 'removePermission']);
+
+
 
 //

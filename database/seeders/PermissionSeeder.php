@@ -19,6 +19,7 @@ class PermissionSeeder extends Seeder
             'page',
             'menu',
             'slide',
+            'user',
             'file.upload', 'file.delete',
         ];
 

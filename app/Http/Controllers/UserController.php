@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware('permission:user')->except('personalDetails');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
+        return  new UserCollection(User::all());
     }
 
     /**
@@ -28,7 +37,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return $this->resource(
+            new UserResource($user->load('permissions'))
+        );
     }
 
     /**
@@ -45,5 +56,11 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function personalDetails()
+    {
+        $user = Auth::user();
+        return $this->resource(new UserResource($user->load('permissions')));
     }
 }

@@ -2,48 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PermissionResource;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
+    public function __construct()
+    {
+
+        //add permission:permission
+        $this->middleware(['auth:sanctum', 'permission:user']);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
+        $permissions = Permission::all();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Permission $permission)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Permission $permission)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Permission $permission)
-    {
-        //
+        return $this->resource(PermissionResource::collection($permissions));
     }
 }
