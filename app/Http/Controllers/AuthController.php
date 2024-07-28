@@ -16,10 +16,14 @@ class AuthController extends Controller
 
         if (!Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
 
-            return $this->error('Creditials do not match', 422);
+            return $this->error('Access denied', 403);
         }
         $user = Auth::user();
 
 
+
+        return $this->success([
+            'accessToken' => $user->createToken('AuthToken')->plainTextToken
+        ]);
     }
 }

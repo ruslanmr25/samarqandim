@@ -17,6 +17,14 @@ class DatabaseSeeder extends Seeder
     {
 
         User::create([
+            'username' => 'superAdmin',
+            'fullname' => 'Super Admin',
+            'email' => 'superadmin@gmail.com',
+            'password' => Hash::make(123456789)
+
+        ]);
+
+        User::create([
             'username' => 'ruslan',
             'fullname' => 'Mamasalayev Ruslan',
             'email' => 'ruslanmamasalayev@gmail.com',
@@ -32,7 +40,8 @@ class DatabaseSeeder extends Seeder
             NewsCategorySeeder::class,
             MenuSeeder::class,
             PageSeeder::class,
-            NewsSeeder::class,
+            // NewsSeeder::class,
+            PermissionSeeder::class
         ]);
     }
 }

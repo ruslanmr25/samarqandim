@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 class FileUploadController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum', 'permission:file.upload'])->only(['store']);
+    }
+
     public array  $types = [
         "news",
         "slide"

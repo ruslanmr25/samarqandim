@@ -7,6 +7,7 @@ use App\Http\Controllers\SlideController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserPermissionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -85,9 +86,15 @@ Route::apiResource("slides", SlideController::class)->except(['show']);
 //                             User Rooutes                                                   //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::group(['prefix' => 'users'], function () {
-});
 
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                             Permission Rooutes                                             //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('permissions/personal',[UserPermissionController::class,'getPermissions'])->middleware('auth:sanctum');
 
 //

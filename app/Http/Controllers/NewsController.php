@@ -19,13 +19,20 @@ use Illuminate\Support\Facades\File;
  */
 class NewsController extends Controller
 {
+
+
+
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
+    }
+
     /**
      *Get all news
      *
      * @queryParam perPage int . No-example
      * @queryParam lang string , in [uz,en,ru,kr]. No-example
      */
-
     public function index(NewsFilter $newsFilter)
     {
 
