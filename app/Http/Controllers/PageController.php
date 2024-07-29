@@ -31,10 +31,11 @@ class PageController extends Controller
      * Get Page
      *
      */
-    public function show($page, PageFilter $filter)
+    public function show($menu, PageFilter $filter)
     {
+        
         return $this->success(
-            new PageResource(Page::FindByLang($page, $filter, 'menu_id'))
+            new PageResource(Page::FindByLang($menu, $filter, 'menu_id'))
         );
     }
 

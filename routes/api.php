@@ -71,7 +71,7 @@ Route::apiResource("menus", MenuController::class);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::get("pages/{page:menu_id}", [PageController::class, 'show']);
+Route::get("pages/{menu:menu_id}", [PageController::class, 'show']);
 
 Route::post("pages", [PageController::class, 'store']);
 
@@ -88,8 +88,8 @@ Route::apiResource("slides", SlideController::class)->except(['show']);
 //                             User Rooutes                                                   //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('users/personal-details',[UserController::class,'personalDetails']);
-Route::apiResource('users',UserController::class);
+Route::get('users/personal-details', [UserController::class, 'personalDetails']);
+Route::apiResource('users', UserController::class);
 
 
 

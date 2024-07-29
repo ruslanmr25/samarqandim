@@ -24,7 +24,7 @@ class NewsController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
+        // $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
     }
 
     /**

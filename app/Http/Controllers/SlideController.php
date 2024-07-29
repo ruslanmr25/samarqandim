@@ -17,7 +17,7 @@ class SlideController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:sanctum', 'permission:slide'])->only(['store', 'update', 'destroy']);
+        // $this->middleware(['auth:sanctum', 'permission:slide'])->only(['store', 'update', 'destroy']);
     }
     /**
      *  Get all slides

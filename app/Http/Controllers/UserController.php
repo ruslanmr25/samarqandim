@@ -13,8 +13,8 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:sanctum');
-        $this->middleware('permission:user')->except('personalDetails');
+        // $this->middleware('auth:sanctum');
+        // $this->middleware('permission:user')->except('personalDetails');
     }
     /**
      * Display a listing of the resource.

@@ -16,7 +16,7 @@ class MenuController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:sanctum', 'permission:menu'])->only(['store', 'update', 'destroy']);
+        // $this->middleware(['auth:sanctum', 'permission:menu'])->only(['store', 'update', 'destroy']);
     }
     /**
      * Get all menu that level 3

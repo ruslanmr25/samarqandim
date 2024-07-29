@@ -14,8 +14,8 @@ class UserPermissionController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:sanctum');
-        $this->middleware('permission:user')->except('getPermissions');
+        // $this->middleware('auth:sanctum');
+        // $this->middleware('permission:user')->except('getPermissions');
     }
     public function getPermissions()
     {
