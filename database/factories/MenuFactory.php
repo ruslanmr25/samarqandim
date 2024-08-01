@@ -24,7 +24,7 @@ class MenuFactory extends Factory
             "name_kr" => $this->faker->words(5, true),
 
             "level" => $level,
-            "path" => "paaaaaaaaaaaath"
+            "path" => $this->faker->unique()->randomAscii()
         ];
     }
 }

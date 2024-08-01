@@ -7,7 +7,7 @@ use App\Models\Slide;
 use App\Http\Requests\StoreSlideRequest;
 use App\Http\Requests\UpdateSlideRequest;
 use App\Http\Resources\SlideCollection;
-use App\Http\Resources\SlideResource;
+
 use Illuminate\Support\Facades\File;
 
 /**

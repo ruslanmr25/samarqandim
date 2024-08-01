@@ -25,6 +25,14 @@ class Menu extends Model
 
 
 
+    protected  $acceptedRelationships = [
+        'children',
+        'children.children',
+
+    ];
+
+
+
 
     public function scopeFilter(Builder $builder, BaseFilter $filter)
     {
@@ -40,6 +48,7 @@ class Menu extends Model
     //own relationships
     public function children()
     {
+
         return $this->hasMany(Menu::class, 'parent_id');
     }
 
@@ -51,5 +60,22 @@ class Menu extends Model
     public function page()
     {
         return $this->hasOne(Page::class);
+    }
+
+
+    public function getRelationshipData()
+    {
+        foreach ($this->acceptedRelationships as $relatinoship) {
+            if ($this->include($relatinoship)) {
+
+                $this->load($relatinoship);
+
+                if ($relatinoship == 'children.children') {
+                    // dd('asd');
+                    $this->load('children.page');
+                }
+            }
+        }
+        $this->load('page');
     }
 }

@@ -10,7 +10,7 @@ class BaseFilter
     public $perPage;
 
     protected Builder $builder;
-    protected Request $request;
+    public Request $request;
 
     protected string $lang;
 
@@ -57,10 +57,11 @@ class BaseFilter
     public function select($unnecessary)
     {
 
-        if ($this->lang = 'all') {
+
+        if ($this->lang == 'all') {
             $this->getAllColumn();
         } else {
-            $this->builder->select($this->setLanguage($unnecessaryColumns));
+            $this->builder->select($this->setLanguage($unnecessary));
         }
     }
 
@@ -88,6 +89,9 @@ class BaseFilter
 
     public function setLanguage($unnecessary = [])
     {
+        if ($this->lang == 'all') {
+            return ['*'];
+        }
         // do not select unnecessary columns
         $generalColumns = array_diff($this->generalColumns, $unnecessary);
 

@@ -7,7 +7,7 @@ use App\Models\Page;
 use App\Http\Requests\StorePageRequest;
 use App\Http\Requests\UpdatePageRequest;
 use App\Http\Resources\PageResource;
-
+use App\Models\Menu;
 
 /**
  * @group Page
@@ -22,8 +22,12 @@ class PageController extends Controller
     public function store(StorePageRequest $request)
     {
 
+        $menu = Menu::where('path', $request->menu)->first();
+        $menu->page()->create($request->all());
+
+
         // return $request->all();
-        Page::create($request->all());
+        // Page::create($request->all());
         return $this->success();
     }
 
@@ -31,20 +35,24 @@ class PageController extends Controller
      * Get Page
      *
      */
-    public function show($menu, PageFilter $filter)
+    public function show(Menu $menu, PageFilter $filter)
     {
-        
-        return $this->success(
-            new PageResource(Page::FindByLang($menu, $filter, 'menu_id'))
+
+        return $this->resource(
+            new PageResource(Page::FindByLang($menu->id, $filter, 'menu_id'))
         );
     }
+
+
 
     /**
      * Update Page
      */
-    public function update(UpdatePageRequest $request, Page $page)
+    public function update(UpdatePageRequest $request, Menu $menu)
     {
-        //
+        $menu->page->update($request->all());
+
+        return $this->success();
     }
 
     /**

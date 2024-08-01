@@ -13,9 +13,26 @@ trait ExtraModelMethods
         $filter->apply($builder, $unnecessaryColumns);
     }
 
+
+
     public static function FindByLang($id, BaseFilter $filter, $column = "id")
     {
 
         return self::where($column, $id)->firstOrFail($filter->setLanguage());
     }
+
+
+    public function include(string $relationship): bool
+    {
+        $param = request()->get('include');
+
+        if (!isset($param)) {
+            return false;
+        }
+        $includeValues = explode(',', strtolower($param));
+        return in_array(strtolower($relationship), $includeValues);
+    }
+
+
+
 }

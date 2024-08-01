@@ -32,11 +32,9 @@ class Controller extends BaseController
         return response()->json([
             "success" => true,
             "message" => $message ?? $this->successMessage,
-            "result" => [
-                'data' =>
-                $data
+            "result" => $data
 
-            ]
+
         ], $statusCode);
     }
 
@@ -48,4 +46,8 @@ class Controller extends BaseController
             "error" => $error ?? $this->errorMessage
         ], $statusCode);
     }
+
+
+
+
 }

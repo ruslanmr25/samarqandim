@@ -71,10 +71,11 @@ Route::apiResource("menus", MenuController::class);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::get("pages/{menu:menu_id}", [PageController::class, 'show']);
+Route::get("pages/{menu:path}", [PageController::class, 'show']);
 
 Route::post("pages", [PageController::class, 'store']);
 
+Route::put("pages/{menu:path}", [PageController::class, 'update']);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //                             Slide Rooutes                                                  //

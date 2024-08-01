@@ -29,7 +29,7 @@ class MenuController extends Controller
     {
 
 
-        return new MenuCollection(Menu::filter($filter)->get());
+        return new MenuCollection(Menu::with('page')->filter($filter)->get());
     }
 
 
@@ -53,7 +53,12 @@ class MenuController extends Controller
     {
         $menu = Menu::FindByLang($menu, $filter, 'path');
 
-        return $this->resource(new MenuResource($menu->load("children")));
+        // $menu->getRelationshipData();
+        $menu->load(["children", 'children.children', 'page', 'children.page']);
+
+
+
+        return $this->resource(new MenuResource($menu));
     }
 
 

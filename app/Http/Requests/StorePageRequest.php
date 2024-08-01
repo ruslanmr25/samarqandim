@@ -34,7 +34,7 @@ class StorePageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "menuId" => 'required|exists:menus,id',
+            "menu" => 'required|exists:menus,path',
 
 
         ];
@@ -45,7 +45,7 @@ class StorePageRequest extends FormRequest
     {
         $this->merge([
 
-            'menu_id' => $this->menuId,
+            // 'menu_id' => $this->menuId,
             'title_uz' => $this->titleUz,
             'title_en' => $this->titleEn,
             'title_ru' => $this->titleRu,

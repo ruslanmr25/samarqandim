@@ -70,7 +70,7 @@ class NewsController extends Controller
     {
 
         return
-            $this->success(
+            $this->resource(
                 new NewsResource(News::FindByLang($news, $filter)->load('images'))
             );
     }
