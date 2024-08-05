@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'username' => $this->username,
             'fullname' => $this->fullname,
             'email' => $this->email,
-            'permissions' => $this->whenLoaded('permissions', $this->permissions()->pluck('permission'))
+            'permissions' => $this->whenLoaded('permissions', PermissionResource::collection($this->permissions()->get()))
         ];
     }
 }

@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return  new UserCollection(User::all());
+        return  new UserCollection(User::with('permissions')->get());
     }
 
     /**
@@ -55,7 +55,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return  $this->success();
     }
 
     public function personalDetails()

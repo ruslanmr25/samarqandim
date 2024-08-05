@@ -37,6 +37,7 @@ class PageController extends Controller
      */
     public function show(Menu $menu, PageFilter $filter)
     {
+        
 
         return $this->resource(
             new PageResource(Page::FindByLang($menu->id, $filter, 'menu_id'))
