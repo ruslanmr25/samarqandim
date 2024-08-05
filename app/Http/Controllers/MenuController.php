@@ -51,10 +51,21 @@ class MenuController extends Controller
      */
     public function show($menu, MenuFilter $filter)
     {
+
         $menu = Menu::FindByLang($menu, $filter, 'path');
 
-        // $menu->getRelationshipData();
-        $menu->load(["children", 'children.children', 'page', 'children.page']);
+
+        $menu->load([
+            "children" => function ($query) use ($filter) {
+                return $query->select($filter->setLanguage());
+            },
+            "children.children" => function ($query) use ($filter) {
+                return $query->select($filter->setLanguage());
+            }
+        ]);
+
+
+        // return $menu;
 
 
 

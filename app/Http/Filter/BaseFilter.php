@@ -5,19 +5,23 @@ namespace App\Http\Filter;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
+
+/**
+ * @method void primary()
+ */
 class BaseFilter
 {
     public $perPage;
 
     protected Builder $builder;
-    public Request $request;
+    protected Request $request;
 
     protected string $lang;
 
     protected array $generalColumns = [];
     protected array $ColumnsDependOnLang = [];
 
-
+    protected array $guardedMethod = ['apply', 'select', 'addLangToColumn', 'setLanguage', 'primary'];
 
     public function __construct(Request $request)
     {
@@ -39,15 +43,15 @@ class BaseFilter
         //call filters
         foreach ($this->request->all() as $key => $value) {
 
-            if (method_exists($this, $key)) {
+            if (method_exists($this, $key) && !in_array($key, $this->guardedMethod)) {
 
                 $this->$key($value);
             }
         }
 
+        //select columns
         $this->select($unnecessaryColumns);
 
-        //select columns
 
 
         return $this->builder;
@@ -57,20 +61,16 @@ class BaseFilter
     public function select($unnecessary)
     {
 
-
         if ($this->lang == 'all') {
-            $this->getAllColumn();
+            $this->builder->select('*');
         } else {
             $this->builder->select($this->setLanguage($unnecessary));
         }
     }
 
 
-
     protected function addLangToColumn($unnecessary)
     {
-
-
 
         return array_map(
             function ($column) {
@@ -81,17 +81,10 @@ class BaseFilter
         );
     }
 
-    public function getAllColumn()
-    {
-        $this->builder->select('*');
-    }
-
 
     public function setLanguage($unnecessary = [])
     {
-        if ($this->lang == 'all') {
-            return ['*'];
-        }
+
         // do not select unnecessary columns
         $generalColumns = array_diff($this->generalColumns, $unnecessary);
 

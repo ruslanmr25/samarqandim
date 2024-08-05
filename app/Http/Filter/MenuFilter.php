@@ -2,11 +2,13 @@
 
 namespace App\Http\Filter;
 
-
+/**
+ * @method array setLanguage()
+ */
 class MenuFilter extends BaseFilter
 {
 
-    protected array $generalColumns = ['id', 'path', 'level'];
+    protected array $generalColumns = ['id', 'path', 'level', 'parent_id'];
     protected array $ColumnsDependOnLang = ['name'];
 
 
