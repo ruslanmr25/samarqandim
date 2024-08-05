@@ -34,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 # Has a lot work
 Route::post('/login', [AuthController::class, 'login']);
 
+ROute::post('/register', [AuthController::class, 'register']);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
