@@ -28,7 +28,8 @@ class StoreMenuRequest extends FormRequest
             'nameKr' => 'string',
             'level' => 'required|integer|min:1',
             'parentId' => 'required_unless:level,1|exists:menus,id',
-            'path' => 'required|unique:menus,path'
+            'path' => 'required|unique:menus,path',
+            'externalLink' => 'boolean',
 
 
         ];
@@ -43,7 +44,8 @@ class StoreMenuRequest extends FormRequest
             'name_uz' => $this->nameUz,
             'name_ru' => $this->nameRu,
             'name_kr' => $this->nameKr,
-            'parent_id' => $this->parentId
+            'parent_id' => $this->parentId,
+            'external_link' => $this->externalLink
         ]);
     }
 }

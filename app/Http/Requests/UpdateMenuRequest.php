@@ -32,7 +32,8 @@ class UpdateMenuRequest extends FormRequest
 
             'level' => 'required|integer',
             'parentId' => 'required_unless:level,1|exists:menus,id',
-            'path' => 'required'
+            'path' => 'required',
+            'externalLink' => 'boolean'
 
         ];
     }
@@ -44,6 +45,7 @@ class UpdateMenuRequest extends FormRequest
             'name_uz' => $this->nameUz,
             'name_ru' => $this->nameRu,
             'name_kr' => $this->nameKr,
+            'external_link' => $this->externalLink
         ]);
     }
 }

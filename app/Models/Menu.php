@@ -20,7 +20,8 @@ class Menu extends Model
         'name_kr',
         'level',
         'path',
-        'parent_id'
+        'parent_id',
+        "external_link"
     ];
 
 

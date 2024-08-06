@@ -8,6 +8,7 @@ use App\Models\Menu;
 use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
 use App\Http\Resources\MenuCollection;
+use Illuminate\Database\QueryException;
 
 /**
  * @group Menu
@@ -87,10 +88,15 @@ class MenuController extends Controller
      * Delete menu
      *
      */
-    public function destroy(Menu $menu)
+    public function destroy($menu)
     {
-        $menu->delete();
+        $menu = Menu::where('path', $menu)->firstOrFail();
+        try {
 
-        return $this->success();
+            $menu->delete();
+            return $this->success();
+        } catch (QueryException $exception) {
+            return $this->error("You cannot menu until delete this menu child");
+        }
     }
 }

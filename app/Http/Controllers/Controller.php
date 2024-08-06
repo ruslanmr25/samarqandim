@@ -43,11 +43,7 @@ class Controller extends BaseController
 
         return response()->json([
             "success" => false,
-            "error" => $error ?? $this->errorMessage
+            "message" => $error ?? $this->errorMessage
         ], $statusCode);
     }
-
-
-
-
 }

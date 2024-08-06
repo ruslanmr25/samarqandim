@@ -27,6 +27,7 @@ class AuthController extends Controller
 
             return $this->error('Access denied', 403);
         }
+
         $user = Auth::user();
 
 
@@ -34,24 +35,5 @@ class AuthController extends Controller
         return $this->success([
             'accessToken' => $user->createToken('AuthToken')->plainTextToken
         ]);
-    }
-    /**
-     * Register
-     * @group Auth
-     * @param \App\Http\Requests\RegisterRequest $request
-     * @return mixed|\Illuminate\Http\JsonResponse
-     */
-    public function register(RegisterRequest $request)
-    {
-        $user = User::create([
-            'username' => $request->username,
-            'fullname' => $request->fullname,
-            'email' => $request->email,
-            'password' => Hash::make($request->pasword)
-
-        ]);
-        $user->permissions()->sync($request->permissions);
-
-        return $this->resource(new UserResource($user->load("permissions")));
     }
 }
