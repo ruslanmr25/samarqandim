@@ -24,7 +24,8 @@ class NewsController extends Controller
 
     public function __construct()
     {
-        // $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
+        $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
+        $this->middleware('CheckNewsCategoryAccess')->only('store');
     }
 
     /**
@@ -54,7 +55,7 @@ class NewsController extends Controller
     {
         News::create($request->all())
             ->images()
-            ->create(['path' => $request->path]);
+            ->create(['path' => $request->imagePath]);
 
         return $this->success();
     }
@@ -84,8 +85,11 @@ class NewsController extends Controller
     public function update(UpdateNewsRequest $request, News $news)
     {
 
-        // return $request->all();
+
         $news->update($request->all());
+        $news->images()->first()->update([
+            'path' => $request->imagePath
+        ]);
 
         return $this->success();
     }

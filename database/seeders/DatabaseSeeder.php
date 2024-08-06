@@ -16,13 +16,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        User::create([
+        $suparAdmin = User::create([
             'username' => 'superAdmin',
             'fullname' => 'Super Admin',
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make(123456789)
 
         ]);
+
 
         User::create([
             'username' => 'ruslan',
@@ -40,8 +41,9 @@ class DatabaseSeeder extends Seeder
             NewsCategorySeeder::class,
             MenuSeeder::class,
             PageSeeder::class,
-            // NewsSeeder::class,
-            PermissionSeeder::class
+            PermissionSeeder::class,
+            RoleSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }

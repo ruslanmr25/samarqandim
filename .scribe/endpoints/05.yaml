@@ -1,16 +1,16 @@
-name: Slide
+name: Menu
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/slides
+    uri: api/menus
     metadata:
-      groupName: Slide
+      groupName: Menu
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get all slides'
+      title: 'Get all menu that level 3'
       description: ''
       authenticated: false
       custom: []
@@ -20,44 +20,47 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      status:
-        name: status
-        description: 'Sign of active or unactive'
-        required: false
-        example: null
-        type: string
-        enumValues:
-          - '1'
-          - '0'
-        exampleWasSpecified: false
-        custom: []
       lang:
         name: lang
         description: ''
         required: false
-        example: en
+        example: null
         type: string
-        enumValues:
-          - uz
-          - kr
-          - en
-          - ru
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      level:
+        name: level
+        description: ''
+        required: false
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      withChildren:
+        name: withChildren
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanQueryParameters:
-      lang: en
+      withChildren: false
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"The operation was done successfully","result":{"data":[]}}'
+        content: '{"success":true,"message":"The operation was done successfully!","result":{"data":[{"id":1,"name":"Yangiliklar","level":1,"path":"news","externalLink":false,"hasPage":null},{"id":2,"name":"Tuzilma","level":1,"path":"structure","externalLink":false,"hasPage":null},{"id":3,"name":"Ilmiy faoliyat","level":1,"path":"scientific-activity","externalLink":false,"hasPage":null},{"id":4,"name":"Xalqaro aloqalar","level":1,"path":"international-relations","externalLink":false,"hasPage":null},{"id":5,"name":"Madaniy-ma\u2019rifiy faoliyat","level":1,"path":"cultural-and-educational-activity","externalLink":false,"hasPage":null},{"id":6,"name":"Moliyaviy faoliyat","level":1,"path":"financial-activity","externalLink":false,"hasPage":null}]}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -70,14 +73,14 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/slides
+    uri: api/menus
     metadata:
-      groupName: Slide
+      groupName: Menu
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Store new Slide'
-      description: ''
+      title: 'Store Menu'
+      description: 'Only spaadmin'
       authenticated: false
       custom: []
     headers:
@@ -88,44 +91,86 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      path:
-        name: path
-        description: 'The path of image.'
+      nameEn:
+        name: nameEn
+        description: ''
+        required: false
+        example: inventore
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nameUz:
+        name: nameUz
+        description: ''
+        required: false
+        example: quaerat
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nameRu:
+        name: nameRu
+        description: ''
+        required: false
+        example: ex
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nameKr:
+        name: nameKr
+        description: ''
+        required: false
+        example: nulla
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      level:
+        name: level
+        description: 'Must be at least 1.'
         required: true
+        example: 19
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      parentId:
+        name: parentId
+        description: 'This field is required unless <code>level</code> is in <code>1</code>.'
+        required: false
         example: null
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      titleRu:
-        name: titleRu
-        description: string.
-        required: false
-        example: null
-        type: optional
+      path:
+        name: path
+        description: ''
+        required: true
+        example: omnis
+        type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      titleKr:
-        name: titleKr
-        description: string.
+      externalLink:
+        name: externalLink
+        description: ''
         required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      titleUz:
-        name: titleUz
-        description: string.
-        required: false
-        example: null
-        type: optional
+        example: false
+        type: boolean
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      path: null
+      nameEn: inventore
+      nameUz: quaerat
+      nameRu: ex
+      nameKr: nulla
+      level: 19
+      path: omnis
+      externalLink: false
     fileParameters: []
     responses: []
     responseFields: []
@@ -136,15 +181,69 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/slides/{id}'
+      - GET
+    uri: 'api/menus/{id}'
     metadata:
-      groupName: Slide
+      groupName: Menu
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update slide'
+      title: 'Get menu by path'
+      description: '@urlParam id int required The ID of the post'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the menu.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Menu]."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '55'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/menus/{id}'
+    metadata:
+      groupName: Menu
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update Menu'
       description: ''
       authenticated: false
       custom: []
@@ -154,19 +253,98 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the slide.'
+        description: 'The ID of the menu.'
         required: true
-        example: 20
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 20
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      level:
+        name: level
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      parentId:
+        name: parentId
+        description: 'This field is required unless <code>level</code> is in <code>1</code>.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      path:
+        name: path
+        description: ''
+        required: true
+        example: a
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      externalLink:
+        name: externalLink
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nameEn:
+        name: nameEn
+        description: optional
+        required: false
+        example: amet
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nameUz:
+        name: nameUz
+        description: optional
+        required: false
+        example: cumque
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nameRU:
+        name: nameRU
+        description: optional
+        required: false
+        example: asperiores
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      nameKr:
+        name: nameKr
+        description: optional
+        required: false
+        example: aut
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      level: 17
+      path: a
+      externalLink: true
+      nameEn: amet
+      nameUz: cumque
+      nameRU: asperiores
+      nameKr: aut
     fileParameters: []
     responses: []
     responseFields: []
@@ -178,13 +356,13 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/slides/{id}'
+    uri: 'api/menus/{id}'
     metadata:
-      groupName: Slide
+      groupName: Menu
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Delete slide'
+      title: 'Delete menu'
       description: ''
       authenticated: false
       custom: []
@@ -194,15 +372,15 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the slide.'
+        description: 'The ID of the menu.'
         required: true
-        example: 12
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: 12
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

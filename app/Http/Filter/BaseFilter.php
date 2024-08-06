@@ -50,7 +50,7 @@ class BaseFilter
         }
 
         //select columns
-        $this->select($unnecessaryColumns);
+        $this->builder->select($this->setLanguage($unnecessaryColumns));
 
 
 
@@ -58,15 +58,7 @@ class BaseFilter
     }
 
 
-    public function select($unnecessary)
-    {
 
-        if ($this->lang == 'all') {
-            $this->builder->select('*');
-        } else {
-            $this->builder->select($this->setLanguage($unnecessary));
-        }
-    }
 
 
     protected function addLangToColumn($unnecessary)
@@ -85,6 +77,10 @@ class BaseFilter
     public function setLanguage($unnecessary = [])
     {
 
+
+        if ($this->lang == 'all') {
+            return ['*'];
+        }
         // do not select unnecessary columns
         $generalColumns = array_diff($this->generalColumns, $unnecessary);
 

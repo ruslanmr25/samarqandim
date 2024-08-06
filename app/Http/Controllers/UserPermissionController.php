@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
+/**
+ * @group Permissions
+ */
 class UserPermissionController extends Controller
 {
 
@@ -17,6 +21,10 @@ class UserPermissionController extends Controller
         // $this->middleware('auth:sanctum');
         // $this->middleware('permission:user')->except('getPermissions');
     }
+    /**
+     * Get User permissions
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function getPermissions()
     {
         $user = Auth::user();
@@ -25,8 +33,9 @@ class UserPermissionController extends Controller
     }
 
     /**
-     * You must check target user is not spadmin
-     * @param \App\Http\Requests\ManagePermissionRequest     $request
+     *
+     * @name Assign Permission to User
+     * @param \App\Http\Requests\ManagePermissionRequest $request
      * @return mixed|\Illuminate\Http\JsonResponse
      */
     public function assignPermssion(ManagePermissionRequest $request)
@@ -37,7 +46,11 @@ class UserPermissionController extends Controller
 
         return $this->success();
     }
-
+    /**
+     * @name Remove Permission from User
+     * @param \App\Http\Requests\ManagePermissionRequest $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function removePermission(ManagePermissionRequest $request)
     {
         $targetuser = User::find($request->userId);

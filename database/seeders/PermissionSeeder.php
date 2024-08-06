@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\NewsCategory;
 use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,8 +30,17 @@ class PermissionSeeder extends Seeder
                 'permission' => $permission
             ]);
         }
-        $permissions = Permission::all()->pluck('id');
 
+
+        $categories = NewsCategory::all();
+
+        foreach ($categories as $category) {
+
+            Permission::create([
+                'permission' => 'news.' . $categories->category
+            ]);
+        }
+        $permissions = Permission::all()->pluck('id');
 
 
 

@@ -19,6 +19,8 @@ class PageResource extends JsonResource
             "title" => $this->title_uz ?? $this->title_en ?? $this->title_kr ?? $this->title_ru,
             "body" => $this->body_uz ?? $this->body_en ?? $this->body_kr ?? $this->body_ru,
             "createdAt" => $this->created_at,
+
+            
             $this->mergeWhen($request->lang == 'all', [
                 'titleUz' => $this->title_uz,
                 'titleRu' => $this->title_ru,
