@@ -28,6 +28,10 @@ class NewsResource extends JsonResource
             "imagePath" => $this->whenLoaded("images", $this->images[0]->path ?? null),
             "createdAt" => $this->created_at,
 
+            "categoryId" => $this->category_id,
+
+
+
             $this->mergeWhen($request->lang == 'all', [
                 'titleUz' => $this->title_uz,
                 'titleRu' => $this->title_ru,

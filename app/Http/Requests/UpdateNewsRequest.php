@@ -44,7 +44,7 @@ class UpdateNewsRequest extends FormRequest
             'body_en' => 'string',
             'body_ru' => 'string',
             'body_kr' => 'string',
-            'deletes_at' => 'date',
+         
 
 
         ];
