@@ -29,7 +29,8 @@ class StoreMenuRequest extends FormRequest
             'level' => 'required|integer|min:1',
             'parentId' => 'required_unless:level,1|exists:menus,id',
             'path' => "required|unique:menus,path,{$this->path},path",
-            'externalLink' => 'boolean',
+            'externalLink' => 'nullable|string',
+            'priority' => 'required|int'
 
 
         ];

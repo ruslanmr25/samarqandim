@@ -9,6 +9,7 @@ use App\Http\Requests\StoreAnnouncementRequest;
 use App\Http\Requests\UpdateAnnouncementRequest;
 use App\Http\Resources\AnnouncementCollection;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @group Announcement
@@ -69,9 +70,12 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-        if (File::exists($announcement->imagePath)) {
 
-            File::delete($announcement->imagePath);
+        $file_path = substr($announcement->imagePath, strpos($announcement->imagePath, '/', 1));
+
+        if (Storage::disk('public')->exists($file_path)) {
+
+            Storage::disk('public')->delete($file_path);
         }
         $announcement->delete();
         return $this->success();

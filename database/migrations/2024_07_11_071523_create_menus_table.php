@@ -23,7 +23,8 @@ return new class extends Migration
 
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('menus');
-            $table->boolean("external_link")->default(false);
+            $table->string("external_link")->nullable();
+            $table->integer("priority");
             $table->timestamps();
         });
     }

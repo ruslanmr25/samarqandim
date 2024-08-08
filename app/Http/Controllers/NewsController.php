@@ -10,6 +10,7 @@ use App\Http\Filter\NewsFilter;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\NewsResource;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @group News
@@ -101,9 +102,11 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        if (File::exists($news->images()->first()->path)) {
+        $file_path = substr($news->images()->first()->path, strpos($news->images()->first()->path, '/', 1));
 
-            File::delete($news->images()->first()->path);
+        if (Storage::disk('public')->exists($file_path)) {
+
+            Storage::disk('public')->delete($file_path);
         }
         $news->delete();
         return $this->success();

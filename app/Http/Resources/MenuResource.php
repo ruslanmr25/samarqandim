@@ -23,6 +23,9 @@ class MenuResource extends JsonResource
             "externalLink" => $this->external_link,
             "children" =>   MenuResource::collection($this->whenLoaded("children")),
             "hasPage" => $this->whenLoaded('page', $this->page()->id ?? null),
+            'priority' => $this->priority,
+            'createdAt' => $this->created_at,
+
 
 
             $this->mergeWhen($request->lang == 'all', [

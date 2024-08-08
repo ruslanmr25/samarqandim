@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateSlideRequest;
 use App\Http\Resources\SlideCollection;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @group Slide
@@ -61,10 +62,16 @@ class SlideController extends Controller
 
 
 
-        if (File::exists($slide->path)) {
 
-            File::delete($slide->path);
+
+
+        $file_path = substr($slide->imagePath, strpos($slide->imagePath, '/', 1));
+
+        if (Storage::disk('public')->exists($file_path)) {
+
+            Storage::disk('public')->delete($file_path);
         }
         $slide->delete();
+        return $this->success();
     }
 }

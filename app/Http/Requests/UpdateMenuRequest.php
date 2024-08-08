@@ -32,8 +32,9 @@ class UpdateMenuRequest extends FormRequest
 
             'level' => 'required|integer',
             'parentId' => 'required_unless:level,1|exists:menus,id',
-            'path' => 'required',
-            'externalLink' => 'boolean'
+            'path' => 'missing',
+            'externalLink' => 'nullable|string',
+            'priority' => 'required|int',
 
         ];
     }

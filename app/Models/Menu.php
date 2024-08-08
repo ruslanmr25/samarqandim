@@ -21,7 +21,8 @@ class Menu extends Model
         'level',
         'path',
         'parent_id',
-        "external_link"
+        "external_link",
+        "priority"
     ];
 
 

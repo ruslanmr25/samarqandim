@@ -22,7 +22,8 @@ class MenuSeeder extends Seeder
                 "name_kr" => "Янгиликлар",
 
                 "level" => 1,
-                "path" => "news"
+                "path" => "news",
+                'priority' => 5,
             ],
             [
                 "name_uz" => "Tuzilma",
@@ -31,7 +32,9 @@ class MenuSeeder extends Seeder
                 "name_ru" => "Состав",
                 "name_kr" => "Тузилма",
                 "level" => 1,
-                "path" => "structure"
+                "path" => "structure",
+                'priority' => 1,
+
             ],
             [
                 "name_uz" => "Ilmiy faoliyat",
@@ -39,7 +42,8 @@ class MenuSeeder extends Seeder
                 "name_ru" => "Научная деятельность",
                 "name_kr" => "Илмий фаолият",
                 "level" => 1,
-                "path" => "scientific-activity"
+                "path" => "scientific-activity",
+                'priority' => 2,
             ],
             [
                 "name_uz" => "Xalqaro aloqalar",
@@ -47,7 +51,8 @@ class MenuSeeder extends Seeder
                 "name_ru" => "Международные отношения",
                 "name_kr" => "Халқаро алоқалар",
                 "level" => 1,
-                "path" => "international-relations"
+                "path" => "international-relations",
+                'priority' => 3,
             ],
             [
                 "name_uz" => "Madaniy-ma’rifiy faoliyat",
@@ -55,7 +60,8 @@ class MenuSeeder extends Seeder
                 "name_ru" => "Культурно-просветительская деятельность",
                 "name_kr" => "Маданий-маърифий фаолият",
                 "level" => 1,
-                "path" => "cultural-and-educational-activity"
+                "path" => "cultural-and-educational-activity",
+                'priority' => 5,
             ],
             [
                 "name_uz" => "Moliyaviy faoliyat",
@@ -63,13 +69,15 @@ class MenuSeeder extends Seeder
                 "name_ru" => "Финансовая деятельность",
                 "name_kr" => "Молиявий фаолият",
                 "level" => 1,
-                "path" => "financial-activity"
+                "path" => "financial-activity",
+                'priority' => 4,
             ],
         ];
 
 
-        Menu::insert($primaryMenu);
-
+        foreach ($primaryMenu as $pr) {
+            Menu::create($pr);
+        }
         // Menu::factory(20)->create();
 
 

@@ -8,7 +8,7 @@ namespace App\Http\Filter;
 class MenuFilter extends BaseFilter
 {
 
-    protected array $generalColumns = ['id', 'path', 'level', 'parent_id', 'external_link'];
+    protected array $generalColumns = ['id', 'path', 'level', 'parent_id', 'external_link','created_at','priority'];
     protected array $ColumnsDependOnLang = ['name'];
 
 
@@ -17,4 +17,7 @@ class MenuFilter extends BaseFilter
 
         return $this->builder->where('level', $this->request->level ?? 1);
     }
+
+
+
 }
