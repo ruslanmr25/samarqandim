@@ -21,7 +21,8 @@ class PermissionSeeder extends Seeder
             'menu',
             'slide',
             'user',
-            'file.upload', 'file.delete',
+            'file',
+            'announcement'
         ];
 
         foreach ($permissions as $permission) {

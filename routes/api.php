@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\FileUploadController;
@@ -48,6 +49,14 @@ Route::apiResource("news-categories", NewsCategoryController::class)
 
 
 Route::apiResource("news", NewsController::class);
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                               Announcement Rooutes                                         //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+Route::apiResource("announcements", AnnouncementController::class);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

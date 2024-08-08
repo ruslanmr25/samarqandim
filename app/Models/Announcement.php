@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Http\Traits\ExtraModelMethods;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Announcement extends Model
 {
-    use HasFactory;
+    use HasFactory,ExtraModelMethods;
     protected $fillable = [
         'title_uz',
         'title_kr',

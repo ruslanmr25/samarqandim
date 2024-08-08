@@ -2,49 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Filter\AnnouncementFilter;
+use App\Http\Resources\AnnouncementResource;
 use App\Models\Announcement;
 use App\Http\Requests\StoreAnnouncementRequest;
 use App\Http\Requests\UpdateAnnouncementRequest;
+use App\Http\Resources\AnnouncementCollection;
+use Illuminate\Support\Facades\File;
 
+/**
+ * @group Announcement
+ */
 class AnnouncementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function __construct()
     {
-        //
+
+        $this->middleware(['auth:sanctum', 'permission:announcement'])->only(['store', 'update', 'destroy']);
+    }
+    /**
+     *@name Get Announcements
+     */
+    public function index(AnnouncementFilter $filter)
+    {
+
+        return new AnnouncementCollection(
+            Announcement::filter($filter, ['status', 'body'])
+                ->latest()
+                ->paginate($filter->perPage)
+        );
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @name Create Announcement
+     *
      */
     public function store(StoreAnnouncementRequest $request)
     {
-        //
+        Announcement::create($request->all());
+
+        return $this->success();
     }
 
     /**
-     * Display the specified resource.
+     * @name Get Announcement
      */
-    public function show(Announcement $announcement)
+    public function show($announcement, AnnouncementFilter $filter)
     {
-        //
+        $announcement = Announcement::FindByLang($announcement, $filter);
+
+        return $this->resource(new AnnouncementResource($announcement));
     }
 
     /**
-     * Update the specified resource in storage.
+     * @name Update Announcement
      */
     public function update(UpdateAnnouncementRequest $request, Announcement $announcement)
     {
-        //
+        $announcement->update($request->all());
+        return $this->success();
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @name Delete Announcement
      */
     public function destroy(Announcement $announcement)
     {
-        //
+        if (File::exists($announcement->imagePath)) {
+
+            File::delete($announcement->imagePath);
+        }
+        $announcement->delete();
+        return $this->success();
     }
 }

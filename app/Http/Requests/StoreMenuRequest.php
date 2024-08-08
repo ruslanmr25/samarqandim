@@ -28,7 +28,7 @@ class StoreMenuRequest extends FormRequest
             'nameKr' => 'string',
             'level' => 'required|integer|min:1',
             'parentId' => 'required_unless:level,1|exists:menus,id',
-            'path' => 'required|unique:menus,path',
+            'path' => "required|unique:menus,path,{$this->path},path",
             'externalLink' => 'boolean',
 
 
@@ -38,14 +38,21 @@ class StoreMenuRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $this->merge([
-
+        $data = [
             'name_en' => $this->nameEn,
             'name_uz' => $this->nameUz,
             'name_ru' => $this->nameRu,
             'name_kr' => $this->nameKr,
+            'level' => $this->level,
             'parent_id' => $this->parentId,
-            'external_link' => $this->externalLink
-        ]);
+            'path' => $this->path,
+            'external_link' => $this->externalLink,
+        ];
+
+        $filteredData = array_filter($data, function ($value) {
+            return !is_null($value);
+        });
+
+        $this->merge($filteredData);
     }
 }
