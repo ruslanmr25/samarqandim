@@ -15,11 +15,11 @@ class PageSeeder extends Seeder
     public function run(): void
     {
 
-        $thirdMenus = Menu::where("level", 3)->get();
+        // $thirdMenus = Menu::where("level", 3)->get();
 
-        foreach ($thirdMenus as $thirdMenu) {
-            $page = Page::factory()->create();
-            $page->update(['menu_id' => $thirdMenu->id]);
-        }
+        // foreach ($thirdMenus as $thirdMenu) {
+        //     $page = Page::factory()->create();
+        //     $page->update(['menu_id' => $thirdMenu->id]);
+        // }
     }
 }

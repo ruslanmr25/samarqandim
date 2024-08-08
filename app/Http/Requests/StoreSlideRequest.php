@@ -30,31 +30,24 @@ class StoreSlideRequest extends FormRequest
     {
         return [
 
-            'path' => 'required'
+            'imagePath' => 'required'
         ];
     }
 
     public function prepareForValidation()
     {
-        if ($this->titleUz) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
-        if ($this->titleEn) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
-        if ($this->titleRu) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
-        if ($this->titleKr) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
+        $this->merge([
+
+            "title_uz" => $this->titleUz,
+            'title_en' => $this->titleEn,
+            'title_ru' => $this->titleRu,
+            'title_kr' => $this->titleKr,
+            'description_uz' => $this->descriptionUz,
+            'description_en' => $this->descriptionEn,
+            'description_ru' => $this->descriptionRu,
+            'description_kr' => $this->descriptionKr,
+
+
+        ]);
     }
 }

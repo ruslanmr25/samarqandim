@@ -16,7 +16,7 @@ class CheckDeleteSuperAdmin
     public function handle(Request $request, Closure $next): Response
     {
 
-        if ($request->user->roles()->first()->role == "superAdmin") {
+        if ($request->user->roles()->first()) {
 
             abort(403, "Forbidden");
         }

@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string("title_en", 1000)->nullable();
             $table->string("title_ru", 1000)->nullable();
             $table->string("title_kr", 1000)->nullable();
-            $table->string("path", 1000);
+            $table->string("description_uz", 1000)->nullable();
+            $table->string("description_en", 1000)->nullable();
+            $table->string("description_ru", 1000)->nullable();
+            $table->string("description_kr", 1000)->nullable();
+            $table->string("imagePath", 1000);
             $table->smallInteger("status")->default(1);
             $table->timestamps();
         });

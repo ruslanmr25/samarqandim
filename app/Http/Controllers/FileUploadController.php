@@ -48,7 +48,8 @@ class FileUploadController extends Controller
 
 
         return $this->success([
-            'path' => $path
+            'path' => $path,
+            'fileSize' => $file->getSize()
         ]);
     }
 }

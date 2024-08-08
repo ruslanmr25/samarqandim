@@ -18,19 +18,14 @@ class UserPermissionController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth:sanctum');
-        // $this->middleware('permission:user')->except('getPermissions');
+        $this->middleware('auth:sanctum');
+        $this->middleware('permission:user');
     }
     /**
      * Get User permissions
      * @return mixed|\Illuminate\Http\JsonResponse
      */
-    public function getPermissions()
-    {
-        $user = Auth::user();
 
-        return $this->resource(['permissions' => $user->permissions->pluck('permission')]);
-    }
 
     /**
      *

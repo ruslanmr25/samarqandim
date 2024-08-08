@@ -37,7 +37,7 @@ class PermissionSeeder extends Seeder
         foreach ($categories as $category) {
 
             Permission::create([
-                'permission' => 'news.' . $categories->category
+                'permission' => 'news.' . $category->category
             ]);
         }
         $permissions = Permission::all()->pluck('id');

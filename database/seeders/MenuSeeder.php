@@ -70,14 +70,14 @@ class MenuSeeder extends Seeder
 
         Menu::insert($primaryMenu);
 
-        Menu::factory(20)->create();
+        // Menu::factory(20)->create();
 
 
-        $secondaryMenus = Menu::where("level", 2);
-        $thirdMenus = Menu::where('level', 3);
+        // $secondaryMenus = Menu::where("level", 2);
+        // $thirdMenus = Menu::where('level', 3);
 
 
-        $secondaryMenus->update(['parent_id' => 2]);
-        $thirdMenus->update(['parent_id' => $secondaryMenus->first()->id]);
+        // $secondaryMenus->update(['parent_id' => 2]);
+        // $thirdMenus->update(['parent_id' => $secondaryMenus->first()->id]);
     }
 }

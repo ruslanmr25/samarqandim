@@ -36,6 +36,7 @@ class SlideController extends Controller
      */
     public function store(StoreSlideRequest $request)
     {
+        // dd($request->all());
 
         Slide::create($request->all());
 
