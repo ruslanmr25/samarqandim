@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("name_kr", 1000)->nullable();
 
             $table->smallInteger("level");
-            $table->string("path", 1000);
+            $table->string("path", 1000)->unique();
 
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('menus');

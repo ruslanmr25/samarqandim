@@ -27,7 +27,7 @@ class BaseFilter
     {
 
         $this->lang = $request->lang ?? 'uz';
-        $this->perPage = $request->perPage ?? 15;
+        $this->perPage = ($request->perPage && $request->perPage < 100) ? (int)$request->perPage : 15;
         $this->request = $request;
     }
 

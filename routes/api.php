@@ -47,7 +47,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::apiResource("news-categories", NewsCategoryController::class)
     ->only(['index']);
 
-
 Route::apiResource("news", NewsController::class);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

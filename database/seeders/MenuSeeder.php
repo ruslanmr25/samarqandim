@@ -72,6 +72,15 @@ class MenuSeeder extends Seeder
                 "path" => "financial-activity",
                 'priority' => 4,
             ],
+            [
+                "name_uz" => "Root",
+                "name_en" => "Root",
+                "name_ru" => "Root",
+                "name_kr" => "Root",
+                "level" => 1,
+                "path" => "visible-link",
+                'priority' => 6,
+            ],
         ];
 
 

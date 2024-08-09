@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             PageSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
-            // NewsSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }
