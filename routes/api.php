@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\FileUploadController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPermissionController;
 use Illuminate\Support\Facades\Route;
@@ -31,10 +33,8 @@ use Illuminate\Support\Facades\Route;
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-# Has a lot work
 Route::post('/login', [AuthController::class, 'login']);
 
-ROute::post('/register', [AuthController::class, 'register']);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,13 +42,20 @@ ROute::post('/register', [AuthController::class, 'register']);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//you have pay attention to the routes in  next step
+//you have to pay attention to the routes in  next step
 
-// Route::apiResource("news-categories", NewsCategoryController::class)
-//     ->except(['show']);
-
+Route::apiResource("news-categories", NewsCategoryController::class)
+    ->only(['index']);
 
 Route::apiResource("news", NewsController::class);
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                               Announcement Rooutes                                         //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+Route::apiResource("announcements", AnnouncementController::class);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,27 +97,24 @@ Route::apiResource("slides", SlideController::class)->except(['show']);
 //                             User Rooutes                                                   //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('users/personal-details', [UserController::class, 'personalDetails']);
-Route::apiResource('users', UserController::class);
 
+Route::get('profile', [ProfileController::class, 'profile']);
+Route::put('profile', [ProfileController::class, 'update']);
+
+Route::apiResource('users', UserController::class);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //                             Permission Rooutes                                             //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('permissions/personal', [UserPermissionController::class, 'getPermissions'])->middleware('auth:sanctum');
 
 Route::apiResource('permissions', PermissionController::class)->only('index');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//                           Managa user Permission Rooutes                                   //
+//                           Manage user Permission Rooutes                                   //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::post('permissions/assign', [UserPermissionController::class, 'assignPermssion']);
-Route::post('permissions/remove', [UserPermissionController::class, 'removePermission']);
-
-
-
-//
+// Route::post('permissions/assign', [UserPermissionController::class, 'assignPermssion']);
+// Route::post('permissions/remove', [UserPermissionController::class, 'removePermission']);

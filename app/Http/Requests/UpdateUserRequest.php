@@ -7,11 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 class UpdateUserRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     *  Checking who is update user and any user has no permission to change isAdmin
      */
     public function authorize(): bool
     {
-        return false;
+        $user = $this->user;
+        $sessionUser = $this->user();
+        return $sessionUser->roles()->first() && $user->id != $sessionUser->id;
     }
 
     /**
@@ -21,10 +23,12 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $userId = $this->user->id;
         return [
-            'id' => 'required',
-            'username' => 'string|unique:table,column,except,id',
-            'email' => 'required|string|email|unique:users,email',
+
+            'username' => "required|string|unique:users,username,{$userId},id",
+            'email' => "required|string|email|unique:users,email,{$userId},id",
             'fullname' => 'required|string',
             'password' => 'required|min:6',
             'permissions' => 'required|array',

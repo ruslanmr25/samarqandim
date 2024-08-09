@@ -35,7 +35,16 @@ class UpdateNewsRequest extends FormRequest
     {
         return [
             'categoryId' => 'required|exists:news_categories,id|integer',
-            'path' => 'required'
+            'imagePath' => 'required',
+            "title_uz" => 'string',
+            'title_en' => 'string',
+            'title_ru' => 'string',
+            'title_kr' => 'string',
+            'body_uz' => 'string',
+            'body_en' => 'string',
+            'body_ru' => 'string',
+            'body_kr' => 'string',
+         
 
 
         ];

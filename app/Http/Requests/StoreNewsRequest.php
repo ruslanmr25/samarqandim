@@ -35,7 +35,7 @@ class StoreNewsRequest extends FormRequest
     {
         return [
             'categoryId' => 'required|exists:news_categories,id|integer',
-            'path' => 'required'
+            'imagePath' => 'required|string'
 
 
 

@@ -1,164 +1,48 @@
-name: Page
+name: 'Upload File'
 description: ''
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: 'api/pages/{page_menu_id}'
+      - POST
+    uri: 'api/upload/{type}'
     metadata:
-      groupName: Page
+      groupName: 'Upload File'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get Page'
+      title: 'Summary of store'
       description: ''
       authenticated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
     urlParameters:
-      page_menu_id:
-        name: page_menu_id
-        description: 'The ID of the page menu.'
-        required: true
-        example: libero
+      type:
+        name: type
+        description: 'in ["news", "slide"].'
+        required: false
+        example: null
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-    cleanUrlParameters:
-      page_menu_id: libero
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/pages
-    metadata:
-      groupName: Page
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Store  page'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      menuId:
-        name: menuId
-        description: int
-        required: false
+      file:
+        name: file
+        description: 'Must be a file. Must not be greater than 4096 kilobytes.'
+        required: true
         example: null
-        type: required
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      titleEn:
-        name: titleEn
-        description: string.
-        required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      titleRu:
-        name: titleRu
-        description: string.
-        required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      titleKr:
-        name: titleKr
-        description: string.
-        required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      titleUz:
-        name: titleUz
-        description: string.
-        required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      bodyEn:
-        name: bodyEn
-        description: string.
-        required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      bodyRu:
-        name: bodyRu
-        description: string.
-        required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      bodyUz:
-        name: bodyUz
-        description: string.
-        required: false
-        example: null
-        type: optional
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      bodyKr:
-        name: bodyKr
-        description: string.
-        required: false
-        example: null
-        type: optional
+        type: file
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters: []
-    fileParameters: []
+    fileParameters:
+      file: null
     responses: []
     responseFields: []
     auth: []

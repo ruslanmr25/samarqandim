@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterRequest;
+
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,7 +23,9 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:sanctum');
-        // $this->middleware('permission:user')->except('personalDetails');
+        $this->middleware('permission:user')->except('personalDetails');
+
+        $this->middleware('checkDSA')->only('destroy');
     }
     /**
      * Display a listing of the resource.
@@ -33,9 +36,9 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @name Create User
      */
-    public function store(RegisterRequest $request)
+    public function store(StoreUserRequest $request)
     {
 
         $user = User::create([
@@ -51,7 +54,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @name Get User
      */
     public function show(User $user)
     {
@@ -61,29 +64,26 @@ class UserController extends Controller
     }
 
     /**
-     * Hali chala ishlari bor
-     * update request
+     *
+     * @name Update User
      */
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
+        $user->permissions()->sync($request->permissions);
+
         return $this->success();
     }
 
     /**
-     *
+     *@name Delete User
+     * Only super admin delete user.
      */
     public function destroy(User $user)
     {
-        
+
         $user->delete();
 
         return  $this->success();
-    }
-
-    public function personalDetails()
-    {
-        $user = Auth::user();
-        return $this->resource(new UserResource($user->load('permissions')));
     }
 }

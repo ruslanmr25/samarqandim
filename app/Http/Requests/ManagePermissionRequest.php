@@ -22,9 +22,9 @@ class ManagePermissionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'permissions'=>'required|array',
+            'permissions' => 'required|array',
             'permissions.*' => 'required|integer|exists:permissions,id',
-            'userId' => 'required|exists:users,id'
+            'userId' => 'required|int|exists:users,id'
         ];
     }
 }

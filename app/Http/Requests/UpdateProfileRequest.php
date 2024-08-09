@@ -3,11 +3,12 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Hash;
 
-class RegisterRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
-
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
@@ -20,18 +21,14 @@ class RegisterRequest extends FormRequest
      */
     public function rules(): array
     {
+        $userId = $this->user()->id;
         return [
-            'username' => 'string|unique:users,username',
-            'email' => 'required|string|email|unique:users,email',
+
+            'username' => "required|string|unique:users,username,{$userId},id",
+            'email' => "required|string|email|unique:users,email,{$userId},id",
             'fullname' => 'required|string',
             'password' => 'required|min:6',
-            'permissions' => 'required|array',
-            'permissions.*' => 'required|int|exists:permissions,id'
+
         ];
     }
-
-    // public function prepareForValidation()
-    // {
-    //     'password'=Hash::make($this->password);
-    // }
 }

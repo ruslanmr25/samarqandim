@@ -15,12 +15,13 @@ class FileUploadController extends Controller
 
     public function __construct()
     {
-        // $this->middleware(['auth:sanctum', 'permission:file.upload'])->only(['store']);
+        $this->middleware(['auth:sanctum', 'permission:file'])->only(['store']);
     }
 
     public array  $types = [
         "news",
-        "slide"
+        "slide",
+        "announcement"
     ];
 
 
@@ -48,7 +49,8 @@ class FileUploadController extends Controller
 
 
         return $this->success([
-            'path' => $path
+            'path' => $path,
+            'fileSize' => $file->getSize()
         ]);
     }
 }

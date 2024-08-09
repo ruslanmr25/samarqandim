@@ -10,6 +10,7 @@ use App\Http\Filter\NewsFilter;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\NewsResource;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @group News
@@ -24,7 +25,8 @@ class NewsController extends Controller
 
     public function __construct()
     {
-        // $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
+        $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
+        // $this->middleware('CheckNewsCategoryAccess')->only('store');
     }
 
     /**
@@ -54,7 +56,7 @@ class NewsController extends Controller
     {
         News::create($request->all())
             ->images()
-            ->create(['path' => $request->path]);
+            ->create(['path' => $request->imagePath]);
 
         return $this->success();
     }
@@ -68,10 +70,15 @@ class NewsController extends Controller
      */
     public function show($news, NewsFilter $filter)
     {
+        $news = News::FindByLang($news, $filter)->load(['images']);
+
+        $news->update([
+            'views' => $news->views + 1
+        ]);
 
         return
             $this->resource(
-                new NewsResource(News::FindByLang($news, $filter)->load('images'))
+                new NewsResource($news)
             );
     }
 
@@ -84,8 +91,11 @@ class NewsController extends Controller
     public function update(UpdateNewsRequest $request, News $news)
     {
 
-        // return $request->all();
+
         $news->update($request->all());
+        $news->images()->first()->update([
+            'path' => $request->imagePath
+        ]);
 
         return $this->success();
     }
@@ -97,9 +107,11 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        if (File::exists($news->images()->first()->path)) {
+        $file_path = substr($news->images()->first()->path, strpos($news->images()->first()->path, '/', 1));
 
-            File::delete($news->images()->first()->path);
+        if (Storage::disk('public')->exists($file_path)) {
+
+            Storage::disk('public')->delete($file_path);
         }
         $news->delete();
         return $this->success();

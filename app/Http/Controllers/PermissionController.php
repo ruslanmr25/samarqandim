@@ -15,7 +15,8 @@ class PermissionController extends Controller
         // $this->middleware(['auth:sanctum', 'permission:user']);
     }
     /**
-     * Display a listing of the resource.
+     * @group Permissions
+     * Get Permissions
      */
     public function index()
     {

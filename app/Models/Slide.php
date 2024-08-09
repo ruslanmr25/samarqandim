@@ -16,8 +16,12 @@ class Slide extends Model
         'title_en',
         'title_ru',
         'title_kr',
-        'path',
-        'status'
+        'imagePath',
+        'status',
+        'description_kr',
+        'description_ru',
+        'description_en',
+        'description_uz'
 
     ];
 }

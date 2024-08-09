@@ -4,7 +4,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/login
+    uri: api/jodit/browse
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -22,28 +22,140 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      username:
-        name: username
+      action:
+        name: action
         description: ''
         required: true
-        example: alias
+        example: quibusdam
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      password:
-        name: password
-        description: 'Must be at least 6 characters.'
-        required: true
-        example: 'IEj)-xt!7kfg:6z&b\W+'
+      path:
+        name: path
+        description: ''
+        required: false
+        example: nihil
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      source:
+        name: source
+        description: ''
+        required: false
+        example: consequuntur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      from:
+        name: from
+        description: ''
+        required: false
+        example: eos
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      name:
+        name: name
+        description: 'This field is required when <code>action</code> is <code>folderCreate</code> or <code>folderRemove</code>.'
+        required: false
+        example: sed
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      newname:
+        name: newname
+        description: 'This field is required when <code>action</code> is <code>folderRename</code>.'
+        required: false
+        example: iure
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      username: alias
-      password: 'IEj)-xt!7kfg:6z&b\W+'
+      action: quibusdam
+      path: nihil
+      source: consequuntur
+      from: eos
+      name: sed
+      newname: iure
     fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/jodit/upload
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      path:
+        name: path
+        description: ''
+        required: false
+        example: qui
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      source:
+        name: source
+        description: ''
+        required: true
+        example: quia
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      files:
+        name: files
+        description: 'Must be a file.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      url:
+        name: url
+        description: 'Must be a valid URL.'
+        required: false
+        example: 'http://pacocha.net/et-totam-ratione-amet-qui-amet-eaque-veritatis'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      path: qui
+      source: quia
+      url: 'http://pacocha.net/et-totam-ratione-amet-qui-amet-eaque-veritatis'
+    fileParameters:
+      files:
+        - null
     responses: []
     responseFields: []
     auth: []

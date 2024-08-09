@@ -30,7 +30,11 @@ class MenuController extends Controller
     {
 
 
-        return new MenuCollection(Menu::with('page')->filter($filter)->get());
+        return new MenuCollection(Menu::with('page')
+            ->filter($filter)
+            ->orderBy('priority')
+            ->orderBy("updated_at", "ASC")
+            ->get());
     }
 
 
@@ -58,10 +62,14 @@ class MenuController extends Controller
 
         $menu->load([
             "children" => function ($query) use ($filter) {
-                return $query->select($filter->setLanguage());
+                return $query->orderBy('priority')
+                    ->orderBy("updated_at", "ASC")->select($filter->setLanguage());
             },
             "children.children" => function ($query) use ($filter) {
-                return $query->select($filter->setLanguage());
+                return $query
+                    ->orderBy('priority')
+                    ->orderBy("updated_at", "ASC")
+                    ->select($filter->setLanguage());
             }
         ]);
 

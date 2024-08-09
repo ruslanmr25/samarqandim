@@ -4,8 +4,8 @@ namespace App\Http\Filter;
 
 class SlideFilter extends BaseFilter
 {
-    protected array $generalColumns = ['id',  'status', 'path', 'created_at',];
-    protected array $ColumnsDependOnLang = ['title'];
+    protected array $generalColumns = ['id',  'status', 'imagePath', 'created_at',];
+    protected array $ColumnsDependOnLang = ['title', 'description'];
 
 
 

@@ -1,49 +1,41 @@
-name: 'Upload File'
+name: 'News Category'
 description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: 'api/upload/{type}'
+      - GET
+    uri: api/news-categories
     metadata:
-      groupName: 'Upload File'
+      groupName: 'News Category'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Summary of store'
+      title: 'Get all news category'
       description: ''
       authenticated: false
       custom: []
     headers:
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      type:
-        name: type
-        description: 'in ["news", "slide"].'
-        required: false
-        example: null
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
+    urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      file:
-        name: file
-        description: 'Must be a file. Must not be greater than 4096 kilobytes.'
-        required: true
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
+    bodyParameters: []
     cleanBodyParameters: []
-    fileParameters:
-      file: null
-    responses: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"The operation was done successfully!","result":{"data":[{"id":1,"category":"old"},{"id":2,"category":"about science"},{"id":3,"category":"about nothing"}]}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null

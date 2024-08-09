@@ -1,16 +1,16 @@
-name: Menu
+name: News
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/menus
+    uri: api/news
     metadata:
-      groupName: Menu
+      groupName: News
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get all menu that level 3'
+      title: 'Get all news'
       description: ''
       authenticated: false
       custom: []
@@ -20,42 +20,222 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      lang:
-        name: lang
-        description: ''
-        required: false
-        example: null
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      level:
-        name: level
-        description: ''
+      perPage:
+        name: perPage
+        description: .
         required: false
         example: null
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      withChildren:
-        name: withChildren
-        description: ''
+      lang:
+        name: lang
+        description: ', in [uz,en,ru,kr].'
         required: false
-        example: false
-        type: boolean
+        example: null
+        type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-    cleanQueryParameters:
-      withChildren: false
+    cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"The operation was done successfully!","result":{"data":[{"id":1,"name":"News","level":1,"path":"news","children":[]},{"id":2,"name":"Structure","level":1,"path":"structure","children":[{"id":7,"name":"aut neque culpa rerum repudiandae","level":2,"path":"paaaaaaaaaaaath"},{"id":8,"name":"doloremque est laborum sit saepe","level":2,"path":"paaaaaaaaaaaath"},{"id":10,"name":"dolor voluptatum aut fuga optio","level":2,"path":"paaaaaaaaaaaath"},{"id":15,"name":"mollitia dolorem et sed possimus","level":2,"path":"paaaaaaaaaaaath"},{"id":17,"name":"maiores nemo maxime molestiae harum","level":2,"path":"paaaaaaaaaaaath"},{"id":20,"name":"odit perferendis voluptatem nulla placeat","level":2,"path":"paaaaaaaaaaaath"},{"id":23,"name":"quia qui alias inventore rerum","level":2,"path":"paaaaaaaaaaaath"}]},{"id":3,"name":"Scientific activity","level":1,"path":"scientific-activity","children":[]},{"id":4,"name":"International relations","level":1,"path":"international-relations","children":[]},{"id":5,"name":"Cultural and educational activity","level":1,"path":"cultural-and-educational-activity","children":[]},{"id":6,"name":"Financial activity","level":1,"path":"financial-activity","children":[]}]}}'
+        content: '{"success":true,"message":"The operation was done successfully!","result":{"data":[{"id":5729,"title":"Iqtidorli talabalarga imtiyozli diplomlar topshirildi\u2026","views":1775,"imagePath":"6683f07940515-6683f07940517-6683f07940518-6683f07940519.jpg","createdAt":"2024-07-02T07:17:00.000000Z"},{"id":5720,"title":"ISHANKULOV TOLIB","views":0,"imagePath":"6682902c5451c-6682902c5451e-6682902c5451f-6682902c54520.jpg","createdAt":"2024-07-01T06:16:26.000000Z"},{"id":5713,"title":"Samarqand davlat universiteti psixologiya va ijtimoiy-siyosiy fanlar hamda tarix fakultetida \"Samarqand falsafasi va tarixi\" nomli yozgi maktab boshlandi... ","views":1917,"imagePath":"66754ea32f761-66754ea32f763-66754ea32f764-66754ea32f765.jpg","createdAt":"2024-06-21T04:49:00.000000Z"},{"id":4643,"title":" MEXANIKA LABORATORIYASI","views":0,"imagePath":"667414ea020e3-667414ea020e5-667414ea020e6-667414ea020e7.jpg","createdAt":"2024-06-20T06:39:22.000000Z"},{"id":4626,"title":"Samarqand davlat universiteti akademik litseyi bitiruvchilariga diplom topshirildi\u2026","views":1991,"imagePath":"6674083115873-6674083115875-6674083115876-6674083115877.jpg","createdAt":"2024-06-20T05:36:00.000000Z"},{"id":4620,"title":"Sharof Rashidov nomidagi Samarqand davlat universiteti huzuridagi ilmiy darajalar beruvchi DSc.30.12.2019.FM\/T.02.09 raqamli Ilmiy kengash qoshidagi ilmiy seminar yig\u2018ilishi 2024-yil 25-iyun kuni soat 14:00 bo\u2018lib o\u2018tadi.","views":842,"imagePath":"6674032303d66-6674032303d68-6674032303d69-6674032303d6a.jpg","createdAt":"2024-06-20T05:20:00.000000Z"},{"id":5570,"title":"Tug\u2018ilgan kuningiz muborak bo\u2018lsin !","views":2507,"imagePath":"645d408b42ff6-645d408b42ffa-645d408b42ffc-645d408b42ffd.png","createdAt":"2024-05-11T22:15:00.000000Z"},{"id":561,"title":"XUSHVAQTOV HAKIM ABDULHAQOVICH","views":0,"imagePath":"663f49e070ef1-663f49e070ef3-663f49e070ef4-663f49e070ef5.jpg","createdAt":"2024-05-11T05:35:12.000000Z"},{"id":493,"title":"NIZOMOV NEGMAT","views":0,"imagePath":"663f492cb1d8b-663f492cb1d8e-663f492cb1d8f-663f492cb1d90.jpg","createdAt":"2024-05-11T05:32:12.000000Z"},{"id":380,"title":"JUMABAEV ABDUVOXID","views":0,"imagePath":"663f489ad7237-663f489ad723a-663f489ad723b-663f489ad723c.jpg","createdAt":"2024-05-11T05:29:46.000000Z"},{"id":218,"title":"IBODOV RUSTAM MUSTAFOYEVICH","views":0,"imagePath":"663f47f7eefc9-663f47f7eefcc-663f47f7eefcd-663f47f7eefce.jpg","createdAt":"2024-05-11T05:27:04.000000Z"},{"id":4744,"title":"Ochiq dars","views":900,"imagePath":"663a2f10afc56-663a2f10afc5a-663a2f10afc5b-663a2f10afc5c.jpg","createdAt":"2024-05-07T08:38:00.000000Z"},{"id":3074,"title":"Samarqand davlat universiteti Janubiy Koreyaning Hankyong milliy universiteti bilan hamkorlikda xalqaro loyihani amalga oshiradi\u2026","views":3261,"imagePath":"6631066114511-6631066114514-6631066114515-6631066114516.jpg","createdAt":"2024-04-30T09:38:00.000000Z"},{"id":1919,"title":"Samarqand davlat universitetiga Tambov viloyati rahbariyati tashrif buyurdi\u2026","views":1837,"imagePath":"662a8bed13bc5-662a8bed13bc8-662a8bed13bc9-662a8bed13bca.jpg","createdAt":"2024-04-25T11:54:00.000000Z"},{"id":1870,"title":"\u201cBolalarimizning yana-da yaxshiroq o\u2018qishi uchun biz universitet bilan hamkorlik qilishimiz lozim\u201d\u2026","views":1688,"imagePath":"662a848b7fea4-662a848b7fea7-662a848b7fea8-662a848b7fea9.jpg","createdAt":"2024-04-25T11:21:00.000000Z"}],"meta":{"currentPage":1,"perPage":15,"lastPage":394,"total":5900}}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/news
+    metadata:
+      groupName: News
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store news'
+      description: 'only signed admin'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      categoryId:
+        name: categoryId
+        description: 'int The type of news.'
+        required: false
+        example: null
+        type: required
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      imagePath:
+        name: imagePath
+        description: ''
+        required: true
+        example: excepturi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      titleEn:
+        name: titleEn
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      titleRu:
+        name: titleRu
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      titleKr:
+        name: titleKr
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      titleUz:
+        name: titleUz
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyEn:
+        name: bodyEn
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyRu:
+        name: bodyRu
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyUz:
+        name: bodyUz
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyKr:
+        name: bodyKr
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      path:
+        name: path
+        description: 'string Main image path.'
+        required: false
+        example: null
+        type: required
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      imagePath: excepturi
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/news/{id}'
+    metadata:
+      groupName: News
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get News'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the news.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters:
+      lang:
+        name: lang
+        description: uz.
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"The operation was done successfully!","result":{"id":1,"title":"Samarqand davlat universitetida respublika esselar tanlovining hududiy bosqichi o''tkazildi","body":"<p><iframe frameborder=\"0\" height=\"720\" scrolling=\"no\" src=\"https:\/\/www.youtube.com\/embed\/zGnR3HLUe78\" title=\"YouTube video player\" width=\"100%\"><\/iframe><\/p>\r\n","status":"1","views":794,"imagePath":"628796dbb11b2-628796dbb11b4-628796dbb11b5-628796dbb11b6.jpg","createdAt":"2022-05-20T13:23:00.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -72,168 +252,15 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - POST
-    uri: api/menus
-    metadata:
-      groupName: Menu
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Store Menu'
-      description: 'Only spaadmin'
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      nameEn:
-        name: nameEn
-        description: ''
-        required: false
-        example: voluptas
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      nameUz:
-        name: nameUz
-        description: ''
-        required: false
-        example: rerum
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      nameRu:
-        name: nameRu
-        description: ''
-        required: false
-        example: ea
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      nameKr:
-        name: nameKr
-        description: ''
-        required: false
-        example: saepe
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      level:
-        name: level
-        description: ''
-        required: true
-        example: 7
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      parentId:
-        name: parentId
-        description: 'This field is required unless <code>level</code> is in <code>1</code>.'
-        required: false
-        example: null
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      path:
-        name: path
-        description: ''
-        required: true
-        example: beatae
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-    cleanBodyParameters:
-      nameEn: voluptas
-      nameUz: rerum
-      nameRu: ea
-      nameKr: saepe
-      level: 7
-      path: beatae
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/menus/{id}'
-    metadata:
-      groupName: Menu
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get menu by path'
-      description: '@urlParam id int required The ID of the post'
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the menu.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Menu]."
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
       - PUT
       - PATCH
-    uri: 'api/menus/{id}'
+    uri: 'api/news/{id}'
     metadata:
-      groupName: Menu
+      groupName: News
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update Menu'
+      title: 'Update news'
       description: ''
       authenticated: false
       custom: []
@@ -243,7 +270,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the menu.'
+        description: 'The ID of the news.'
         required: true
         example: 1
         type: integer
@@ -255,76 +282,97 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      level:
-        name: level
-        description: ''
-        required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      parentId:
-        name: parentId
-        description: 'This field is required unless <code>level</code> is in <code>1</code>.'
+      categoryId:
+        name: categoryId
+        description: 'int The type of news.'
         required: false
         example: null
-        type: string
+        type: optional
         enumValues: []
         exampleWasSpecified: false
         custom: []
       path:
         name: path
-        description: ''
-        required: true
-        example: id
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      nameEn:
-        name: nameEn
-        description: optional
+        description: 'not null string Main image path.'
         required: false
-        example: numquam
-        type: string
+        example: null
+        type: optional
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      nameUz:
-        name: nameUz
-        description: optional
+      titleEn:
+        name: titleEn
+        description: string.
         required: false
-        example: ratione
-        type: string
+        example: null
+        type: optional
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      nameRU:
-        name: nameRU
-        description: optional
+      titleRu:
+        name: titleRu
+        description: string.
         required: false
-        example: et
-        type: string
+        example: null
+        type: optional
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      nameKr:
-        name: nameKr
-        description: optional
+      titleKr:
+        name: titleKr
+        description: string.
         required: false
-        example: quia
-        type: string
+        example: null
+        type: optional
         enumValues: []
         exampleWasSpecified: false
         custom: []
-    cleanBodyParameters:
-      level: 17
-      path: id
-      nameEn: numquam
-      nameUz: ratione
-      nameRU: et
-      nameKr: quia
+      titleUz:
+        name: titleUz
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyEn:
+        name: bodyEn
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyRu:
+        name: bodyRu
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyUz:
+        name: bodyUz
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bodyKr:
+        name: bodyKr
+        description: string.
+        required: false
+        example: null
+        type: optional
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters: []
     fileParameters: []
     responses: []
     responseFields: []
@@ -336,13 +384,13 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/menus/{id}'
+    uri: 'api/news/{id}'
     metadata:
-      groupName: Menu
+      groupName: News
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Delete menu'
+      title: 'Delete News'
       description: ''
       authenticated: false
       custom: []
@@ -352,7 +400,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the menu.'
+        description: 'The ID of the news.'
         required: true
         example: 1
         type: integer
