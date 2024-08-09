@@ -12,7 +12,7 @@ class PermissionController extends Controller
     {
 
         //add permission:permission
-        // $this->middleware(['auth:sanctum', 'permission:user']);
+        $this->middleware(['auth:sanctum', 'permission:user']);
     }
     /**
      * @group Permissions

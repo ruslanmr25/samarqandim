@@ -16,7 +16,7 @@ class NewsSeeder extends Seeder
     {
         //getting old news from old base
 
-        $url = "http://localhost:8001/api";
+        $url = "http://172.16.4.97:8001/api";
 
         $data = json_decode(Http::get($url), true);
 
@@ -37,7 +37,7 @@ class NewsSeeder extends Seeder
                     $news->images()->create([
 
                         'path' => $value['image']['path'],
-                       
+
                     ]);
                 }
             }

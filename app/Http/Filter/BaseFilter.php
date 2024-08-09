@@ -74,12 +74,15 @@ class BaseFilter
     }
 
 
-    public function setLanguage($unnecessary = [])
+    public function setLanguage($unnecessary = [], $ignoreGetAll = true)
     {
 
 
-        if ($this->lang == 'all') {
+        if ($this->lang == 'all' && !$ignoreGetAll) {
             return ['*'];
+        }
+        if ($this->lang == 'all') {
+            $this->lang = 'uz';
         }
         // do not select unnecessary columns
         $generalColumns = array_diff($this->generalColumns, $unnecessary);
