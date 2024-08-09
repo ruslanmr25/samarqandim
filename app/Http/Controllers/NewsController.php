@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
-use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
-use App\Data;
-use App\Http\Filter\NewsFilter;
+use App\Http\Requests\StoreNewsRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\NewsResource;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Filter\NewsFilter;
+use App\Models\News;
+
+
 
 /**
  * @group News
@@ -26,7 +26,7 @@ class NewsController extends Controller
     public function __construct()
     {
         $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
-        // $this->middleware('CheckNewsCategoryAccess')->only('store');
+        $this->middleware('CheckNewsCategoryAccess')->only('store');
     }
 
     /**

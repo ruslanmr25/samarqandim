@@ -18,7 +18,7 @@ trait ExtraModelMethods
     public static function FindByLang($id, BaseFilter $filter, $column = "id")
     {
 
-        return self::where($column, $id)->firstOrFail($filter->setLanguage());
+        return self::where($column, $id)->firstOrFail($filter->setLanguage(ignoreGetAll: false));
     }
 
 
@@ -32,7 +32,4 @@ trait ExtraModelMethods
         $includeValues = explode(',', strtolower($param));
         return in_array(strtolower($relationship), $includeValues);
     }
-
-
-
 }

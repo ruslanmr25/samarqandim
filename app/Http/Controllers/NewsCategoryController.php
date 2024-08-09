@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsCategory;
-use App\Http\Requests\StoreNewsCategoryRequest;
-use App\Http\Requests\UpdateNewsCategoryRequest;
+
 use App\Http\Resources\NewsCategoryCollection;
 
 
