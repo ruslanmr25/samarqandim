@@ -32,8 +32,8 @@ class MenuController extends Controller
 
         return new MenuCollection(Menu::with('page')
             ->filter($filter)
-            ->orderBy('priority')
-            ->orderBy("updated_at", "ASC")
+            ->orderBy('priority', 'ASC')
+            ->orderBy("updated_at", "DESC")
             ->get());
     }
 
@@ -59,28 +59,18 @@ class MenuController extends Controller
 
         $menu = Menu::FindByLang($menu, $filter, 'path');
 
-
         $menu->load([
             "children" => function ($query) use ($filter) {
-                return $query->orderBy('priority')
-
-                    ->orderBy("updated_at", "ASC")
-
-                    ->select($filter->setLanguage());
-            },
-            "children.page",
-
-            "children.children" => function ($query) use ($filter) {
                 return $query
-                    ->orderBy('priority')
-                    ->orderBy("updated_at", "ASC")
+                    ->with(['children' => function ($query) use ($filter) {
+                        $query->select($filter->setLanguage());
+                    }])
+
                     ->select($filter->setLanguage());
             },
-            'children.children.page'
         ]);
 
 
-        // return $menu;
 
 
 
@@ -110,7 +100,7 @@ class MenuController extends Controller
             $menu->delete();
             return $this->success();
         } catch (QueryException $exception) {
-            return $this->error("You cannot menu until delete this menu child");
+            return $this->error("You cannot this menu until delete this menu child");
         }
     }
 }

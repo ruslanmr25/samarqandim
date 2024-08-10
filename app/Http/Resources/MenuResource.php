@@ -33,8 +33,6 @@ class MenuResource extends JsonResource
                 'nameRu' => $this->name_ru,
                 'nameEn' => $this->name_en,
                 'nameKr' => $this->name_kr,
-
-
             ])
 
 

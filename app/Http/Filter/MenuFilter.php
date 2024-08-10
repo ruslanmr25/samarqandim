@@ -8,7 +8,7 @@ namespace App\Http\Filter;
 class MenuFilter extends BaseFilter
 {
 
-    protected array $generalColumns = ['id', 'path', 'level', 'parent_id', 'external_link', 'created_at', 'priority'];
+    protected array $generalColumns = ['id', 'path', 'level', 'parent_id', 'external_link', 'created_at', 'priority', 'updated_at'];
     protected array $ColumnsDependOnLang = ['name'];
 
 

@@ -14,7 +14,10 @@ use App\Models\Menu;
  */
 class PageController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum', 'permission:page'])->only(['store', 'update', 'destroy']);
+    }
 
     /**
      * Store  page
@@ -23,11 +26,12 @@ class PageController extends Controller
     {
 
         $menu = Menu::where('path', $request->menu)->first();
+        //checking that menu does not have double page
+        if ($menu->page) {
+            return $this->error("This menu already has a page");
+        }
         $menu->page()->create($request->all());
 
-
-        // return $request->all();
-        // Page::create($request->all());
         return $this->success();
     }
 
@@ -37,7 +41,6 @@ class PageController extends Controller
      */
     public function show(Menu $menu, PageFilter $filter)
     {
-
 
         return $this->resource(
             new PageResource(Page::FindByLang($menu->id, $filter, 'menu_id'))

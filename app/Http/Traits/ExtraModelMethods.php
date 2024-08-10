@@ -25,7 +25,6 @@ trait ExtraModelMethods
     public function include(string $relationship): bool
     {
         $param = request()->get('include');
-
         if (!isset($param)) {
             return false;
         }

@@ -50,8 +50,10 @@ class Menu extends Model
     //own relationships
     public function children()
     {
-
-        return $this->hasMany(Menu::class, 'parent_id');
+        return $this->hasMany(Menu::class, 'parent_id')
+            ->with('page')
+            ->orderBy('priority')
+            ->orderBy("updated_at", "DESC");
     }
 
     public function parent()
@@ -65,19 +67,4 @@ class Menu extends Model
     }
 
 
-    public function getRelationshipData()
-    {
-        foreach ($this->acceptedRelationships as $relatinoship) {
-            if ($this->include($relatinoship)) {
-
-                $this->load($relatinoship);
-
-                if ($relatinoship == 'children.children') {
-                    // dd('asd');
-                    $this->load('children.page');
-                }
-            }
-        }
-        $this->load('page');
-    }
 }

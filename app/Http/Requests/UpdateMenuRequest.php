@@ -40,13 +40,21 @@ class UpdateMenuRequest extends FormRequest
     }
     public function prepareForValidation()
     {
-        $this->merge([
-            'parent_id' => $this->parentId,
+        $data = [
             'name_en' => $this->nameEn,
             'name_uz' => $this->nameUz,
             'name_ru' => $this->nameRu,
             'name_kr' => $this->nameKr,
-            'external_link' => $this->externalLink
-        ]);
+            'level' => $this->level,
+            'parent_id' => $this->parentId,
+
+            'external_link' => $this->externalLink,
+        ];
+
+        $filteredData = array_filter($data, function ($value) {
+            return !is_null($value);
+        });
+
+        $this->merge($filteredData);
     }
 }

@@ -29,9 +29,13 @@ class CheckUserNewsAccess
             }
         }
 
-        $category = NewsCategory::findOrFail($request->categoryId)->category;
-        if (!$permissions->contains("news." . $category)) {
-            abort(403, "Access denied");
+
+        if ($request->categoryId) {
+
+            $category = NewsCategory::findOrFail($request->categoryId)->category;
+            if (!$permissions->contains("news." . $category)) {
+                abort(403, "Access denied");
+            }
         }
 
 

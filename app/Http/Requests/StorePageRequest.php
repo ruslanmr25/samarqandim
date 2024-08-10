@@ -35,15 +35,13 @@ class StorePageRequest extends FormRequest
     {
         return [
             "menu" => 'required|exists:menus,path',
-
-
         ];
     }
 
 
     public function prepareForValidation()
     {
-        $this->merge([
+        $data = [
 
             // 'menu_id' => $this->menuId,
             'title_uz' => $this->titleUz,
@@ -54,6 +52,11 @@ class StorePageRequest extends FormRequest
             'body_en' => $this->bodyEn,
             'body_ru' => $this->bodyRu,
             'body_kr' => $this->bodyKr,
-        ]);
+        ];
+        $filteredData = array_filter($data, function ($value) {
+            return !is_null($value);
+        });
+
+        $this->merge($filteredData);
     }
 }

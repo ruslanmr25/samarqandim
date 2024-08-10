@@ -19,6 +19,7 @@ class NewsCategorySeeder extends Seeder
             "international_relations",
             "cultural_and_educational_activity",
             "financial_activity",
+            "top",
             // 'faculty_of_mathematics',
             // 'institute_of_biochemistry',
             // 'faculty_of_geography_and_ecology',
