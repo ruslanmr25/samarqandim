@@ -33,18 +33,11 @@ class UpdateNewsRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'categoryId' => 'required|exists:news_categories,id|integer',
-            'imagePath' => 'required',
-            "title_uz" => 'string',
-            'title_en' => 'string',
-            'title_ru' => 'string',
-            'title_kr' => 'string',
-            'body_uz' => 'string',
-            'body_en' => 'string',
-            'body_ru' => 'string',
-            'body_kr' => 'string',
-         
+            'imagePath' => 'required|string'
+
 
 
         ];
@@ -53,7 +46,8 @@ class UpdateNewsRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $this->merge([
+        $data = [
+
             "title_uz" => $this->titleUz,
             'title_en' => $this->titleEn,
             'title_ru' => $this->titleRu,
@@ -62,8 +56,14 @@ class UpdateNewsRequest extends FormRequest
             'body_en' => $this->bodyEn,
             'body_ru' => $this->bodyRu,
             'body_kr' => $this->bodyKr,
-            'deletes_at' => $this->deletesAt,
             'category_id' => $this->categoryId
-        ]);
+
+        ];
+
+        $filteredData = array_filter($data, function ($value) {
+            return !is_null($value);
+        });
+
+        $this->merge($filteredData);
     }
 }

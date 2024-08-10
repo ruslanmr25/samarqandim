@@ -38,7 +38,7 @@ class Controller extends BaseController
         ], $statusCode);
     }
 
-    public function error($error = null, $statusCode = 401)
+    public function error($error = null, $statusCode = 403)
     {
 
         return response()->json([

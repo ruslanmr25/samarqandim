@@ -22,7 +22,7 @@ class MenuResource extends JsonResource
             "path" => $this->path,
             "externalLink" => $this->external_link,
             "children" =>   MenuResource::collection($this->whenLoaded("children")),
-            "hasPage" => $this->whenLoaded('page', $this->page()->id ?? null),
+            "hasPage" =>  $this->page->id ?? null,
             'priority' => $this->priority,
             'createdAt' => $this->created_at,
 

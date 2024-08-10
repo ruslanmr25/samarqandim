@@ -17,7 +17,7 @@ class MenuController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware(['auth:sanctum', 'permission:menu'])->only(['store', 'update', 'destroy']);
+        $this->middleware(['auth:sanctum', 'permission:menu'])->only(['store', 'update', 'destroy']);
     }
     /**
      * Get all menu that level 3
@@ -63,14 +63,20 @@ class MenuController extends Controller
         $menu->load([
             "children" => function ($query) use ($filter) {
                 return $query->orderBy('priority')
-                    ->orderBy("updated_at", "ASC")->select($filter->setLanguage());
+
+                    ->orderBy("updated_at", "ASC")
+
+                    ->select($filter->setLanguage());
             },
+            "children.page",
+
             "children.children" => function ($query) use ($filter) {
                 return $query
                     ->orderBy('priority')
                     ->orderBy("updated_at", "ASC")
                     ->select($filter->setLanguage());
-            }
+            },
+            'children.children.page'
         ]);
 
 

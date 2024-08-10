@@ -89,7 +89,7 @@ Route::put("pages/{menu:path}", [PageController::class, 'update']);
 //                             Slide Rooutes                                                  //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::apiResource("slides", SlideController::class)->except(['show']);
+Route::apiResource("slides", SlideController::class);
 
 
 

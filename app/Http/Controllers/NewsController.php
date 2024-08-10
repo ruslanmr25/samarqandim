@@ -26,7 +26,7 @@ class NewsController extends Controller
     public function __construct()
     {
         $this->middleware(['auth:sanctum', 'permission:news'])->only(['store', 'update', 'destroy']);
-        $this->middleware('CheckNewsCategoryAccess')->only('store');
+        $this->middleware('CheckNewsCategoryAccess')->only(['store', 'update', 'destroy']);
     }
 
     /**
@@ -81,7 +81,6 @@ class NewsController extends Controller
                 new NewsResource($news)
             );
     }
-
 
     /**
      *

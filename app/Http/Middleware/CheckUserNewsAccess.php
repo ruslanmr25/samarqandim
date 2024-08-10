@@ -17,10 +17,19 @@ class CheckUserNewsAccess
     public function handle(Request $request, Closure $next): Response
     {
 
-        $category = NewsCategory::findOrFail($request->categoryId)->category;
 
         $permissions = $request->user()->permissions->pluck('permission');
 
+
+        if ($request->news) {
+            $category = $request->news->category->category;
+
+            if (!$permissions->contains("news." . $category)) {
+                abort(403, "Access denied");
+            }
+        }
+
+        $category = NewsCategory::findOrFail($request->categoryId)->category;
         if (!$permissions->contains("news." . $category)) {
             abort(403, "Access denied");
         }

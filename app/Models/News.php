@@ -32,11 +32,11 @@ class News extends Model
         'body_kr',
         'status',
         'views',
-        'deletes_at'
+
     ];
 
     protected $hidden = [
-        'updated_at', 'deletes_at'
+        'updated_at',
     ];
 
 

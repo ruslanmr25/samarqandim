@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string("status")->default(1);
             $table->integer("views")->default(0);
 
-            $table->timestamp("deletes_at")->nullable();
+       
             $table->timestamps();
         });
     }

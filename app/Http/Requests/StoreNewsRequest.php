@@ -46,7 +46,7 @@ class StoreNewsRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $this->merge([
+        $data = [
 
             "title_uz" => $this->titleUz,
             'title_en' => $this->titleEn,
@@ -56,9 +56,14 @@ class StoreNewsRequest extends FormRequest
             'body_en' => $this->bodyEn,
             'body_ru' => $this->bodyRu,
             'body_kr' => $this->bodyKr,
-            'deletes_at' => $this->deletesAt,
             'category_id' => $this->categoryId
 
-        ]);
+        ];
+
+        $filteredData = array_filter($data, function ($value) {
+            return !is_null($value);
+        });
+
+        $this->merge($filteredData);
     }
 }

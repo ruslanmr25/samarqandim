@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Filter\SlideFilter;
+use App\Http\Resources\SlideResource;
 use App\Models\Slide;
 use App\Http\Requests\StoreSlideRequest;
 use App\Http\Requests\UpdateSlideRequest;
@@ -42,6 +43,12 @@ class SlideController extends Controller
         Slide::create($request->all());
 
         return $this->success();
+    }
+
+    public function show($slide, SlideFilter $filter)
+    {
+        $slide = Slide::FindByLang($slide, $filter);
+        return $this->resource(new SlideResource($slide));
     }
 
 
