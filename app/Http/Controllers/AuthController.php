@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -20,12 +21,14 @@ class AuthController extends Controller
 
         if (!Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
 
+            Log::channel('login')->warning("Kirishga o'rinish. Username : {$request->username}. Kiritilgan password: {$request->password}");
             return $this->error('Access denied', 403);
         }
 
+
         $user = Auth::user();
 
-
+        Log::channel('login')->info("Hisobga muvaffaqiyatli kirildi. Username : {$request->username}. ");
 
         return $this->success([
             'accessToken' => $user->createToken('AuthToken')->plainTextToken

@@ -22,7 +22,7 @@ class AnnouncementResource extends JsonResource
 
             'imagePath' => $this->imagePath,
             "status" => $this->whenNotNull($this->status),
-            'createdAt'=>$this->created_at,
+            'createdAt' => $this->created_at,
 
 
 

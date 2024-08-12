@@ -9,8 +9,7 @@ use App\Http\Resources\NewsCollection;
 use App\Http\Resources\NewsResource;
 use App\Http\Filter\NewsFilter;
 use App\Models\News;
-
-
+use Illuminate\Support\Facades\Log;
 
 /**
  * @group News
@@ -54,10 +53,13 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
-        News::create($request->all())
-            ->images()
+
+
+        $news = News::create($request->all());
+        $news->images()
             ->create(['path' => $request->imagePath]);
 
+        Log::channel('custom')->info("News yaratildi. NewsID: {$news->id} AuthorId: {$request->user()->id}. News TitleUz: {$request->title_uz}");
         return $this->success();
     }
 
@@ -96,6 +98,9 @@ class NewsController extends Controller
             'path' => $request->imagePath
         ]);
 
+        Log::channel('custom')->info("News Update qilindi. NewsID: {$news->id} UpdaterId: {$request->user()->id}. News titleUz {$request->titleUz}");
+
+
         return $this->success();
     }
 
@@ -112,6 +117,8 @@ class NewsController extends Controller
 
             Storage::disk('public')->delete($file_path);
         }
+        Log::channel('custom')->info("News o'chirildi. NewsID: {$news->id} UpdaterId: {user}. News titleUz {$news->titleUz}", ['user' => auth()->user()->id]);
+
         $news->delete();
         return $this->success();
     }

@@ -2,6 +2,8 @@
 
 
 return [
+
+
     'need_auth' => env('JODIT_FILE_BROWSER_NEED_AUTH', false),
 
     /*
@@ -17,7 +19,7 @@ return [
     /*
      * digits after decimal point in file size
      */
-    'file_size_accuracy' => env('JODIT_FILE_BROWSER_FILE_SIZE_ACCURACY', 3),
+    'file_size_accuracy' => env('JODIT_FILE_BROWSER_FILE_SIZE_ACCURACY', 10),
 
     /*
      * Allowed to upload Image types
@@ -34,7 +36,7 @@ return [
     ],
 
     'thumb' => [
-        'dir_url' => env('JODIT_THUMB_DIR_URL', env('APP_URL') . '/assets/images/jodit/'),
+        'dir_url' => env('JODIT_THUMB_DIR_URL', '/assets/images/jodit/'),
 
         'mask' => env('JODIT_THUMB_MASK', 'thumb-%s.svg'),
 
