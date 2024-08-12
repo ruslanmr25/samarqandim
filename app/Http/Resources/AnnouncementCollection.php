@@ -12,7 +12,7 @@ class AnnouncementCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
-    public function     (Request $request): array
+    public function toArray(Request $request): array
     {
         return [
 
