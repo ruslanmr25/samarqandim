@@ -25,9 +25,10 @@ return new class extends Migration
             $table->text("body_en")->nullable();
             $table->text("body_ru")->nullable();
             $table->text("body_kr")->nullable();
-            $table->boolean("status")->default(1);
+            
             $table->string("imagePath");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

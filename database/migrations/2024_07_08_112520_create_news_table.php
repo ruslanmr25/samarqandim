@@ -24,10 +24,11 @@ return new class extends Migration
             $table->longText("body_kr")->nullable();
 
 
-            $table->string("status")->default(1);
+           
             $table->integer("views")->default(0);
+            $table->softDeletes();
 
-       
+
             $table->timestamps();
         });
     }

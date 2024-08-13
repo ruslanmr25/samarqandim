@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string("external_link")->nullable();
             $table->integer("priority");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menus');
+        // Schema::dropIfExists('menus');
     }
 };

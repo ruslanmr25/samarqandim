@@ -22,7 +22,7 @@ class StoreAnnouncementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status' => 'boolean',
+       
             'imagePath' => 'required|string',
         ];
     }

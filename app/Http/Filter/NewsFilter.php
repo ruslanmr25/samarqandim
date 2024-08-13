@@ -7,7 +7,7 @@ class NewsFilter extends BaseFilter
 {
 
 
-    protected array $generalColumns = ['id', 'category_id', 'views', 'status', 'created_at', 'updated_at'];
+    protected array $generalColumns = ['id', 'category_id', 'views',  'created_at', 'updated_at'];
 
 
 

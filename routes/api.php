@@ -12,6 +12,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPermissionController;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 
@@ -118,3 +120,26 @@ Route::apiResource('permissions', PermissionController::class)->only('index');
 
 // Route::post('permissions/assign', [UserPermissionController::class, 'assignPermssion']);
 // Route::post('permissions/remove', [UserPermissionController::class, 'removePermission']);
+
+
+
+Route::get('/get-news', function () {
+    $url = "http://172.16.4.97:8001/api";
+
+
+    $data = Http::get($url)->collect();
+
+    $link = $data['links']['next'];
+
+
+    while ($link != null) {
+        $newsCollection = $data['data'];
+
+        foreach ($newsCollection as $newsObject) {
+
+            $news = $newsObject['news'];
+            $image = $newsObject['image'];
+        }
+    }
+});
+//

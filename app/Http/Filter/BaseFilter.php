@@ -21,12 +21,14 @@ class BaseFilter
     protected array $generalColumns = [];
     protected array $ColumnsDependOnLang = [];
 
+    protected array $langs = ['uz', 'ru', 'kr', 'en', 'all'];
+
     protected array $guardedMethod = ['apply', 'select', 'addLangToColumn', 'setLanguage', 'primary'];
 
     public function __construct(Request $request)
     {
 
-        $this->lang = $request->lang ?? 'uz';
+        $this->lang = ($request->lang and in_array($request->lang, $this->langs)) ? $request->lang : 'uz';
         $this->perPage = ($request->perPage && $request->perPage < 100) ? (int)$request->perPage : 15;
         $this->request = $request;
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("news_id")->references("id")->on("news")->onDelete("CASCADE");
             $table->string("path");
-            // $table->boolean("is_main")->default(false);
+            $table->boolean("is_main")->default(false);
             $table->timestamps();
         });
     }

@@ -22,8 +22,9 @@ return new class extends Migration
             $table->string("description_ru", 1000)->nullable();
             $table->string("description_kr", 1000)->nullable();
             $table->string("imagePath", 1000);
-            $table->smallInteger("status")->default(1);
+          
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Http\Traits\ExtraModelMethods;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Announcement extends Model
 {
-    use HasFactory,ExtraModelMethods;
+    use HasFactory, ExtraModelMethods, SoftDeletes;
     protected $fillable = [
         'title_uz',
         'title_kr',
@@ -22,7 +23,7 @@ class Announcement extends Model
         'body_en',
         'body_ru',
         'body_kr',
-        'status',
+
         'imagePath',
     ];
 }

@@ -29,7 +29,7 @@ class AnnouncementController extends Controller
     {
 
         return new AnnouncementCollection(
-            Announcement::filter($filter, ['status', 'body'])
+            Announcement::filter($filter, ['body'])
                 ->latest()
                 ->paginate($filter->perPage)
         );

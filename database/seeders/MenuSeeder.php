@@ -84,9 +84,9 @@ class MenuSeeder extends Seeder
         ];
 
 
-        foreach ($primaryMenu as $pr) {
-            Menu::create($pr);
-        }
+        // foreach ($primaryMenu as $pr) {
+        //     Menu::create($pr);
+        // }
         // Menu::factory(20)->create();
 
 

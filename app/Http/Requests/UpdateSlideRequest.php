@@ -22,7 +22,8 @@ class UpdateSlideRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'imagePath' => 'required'
+      
         ];
     }
 

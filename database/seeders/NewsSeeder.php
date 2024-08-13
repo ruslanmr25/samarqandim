@@ -14,33 +14,35 @@ class NewsSeeder extends Seeder
      */
     public function run(): void
     {
+
         //getting old news from old base
+
 
         $url = "http://172.16.4.97:8001/api";
 
-        $data = json_decode(Http::get($url), true);
 
-        while ($data['links']['next'] != null) {
-            $url = $data['links']['next'];
+        $data = Http::get($url)->collect();
 
-            $data = json_decode(Http::get($url), true);
+        $link = $data['links']['next'];
 
+        while ($link != null) {
+            $newsCollection = $data['data'];
 
-            $collection = $data['data'];
+            foreach ($newsCollection as $newsObject) {
 
-            foreach ($collection as  $value) {
+                $news = $newsObject['news'];
+                $news = News::create($news);
+                $image = $newsObject['image'];
 
-                $news = News::create($value['news']);
+                if ($image['path'] == null) {
 
-
-                if (isset($value['image']['path'])) {
-                    $news->images()->create([
-
-                        'path' => $value['image']['path'],
-
-                    ]);
+                    $image['path'] = "";
                 }
+                $news->images()->create($image);
             }
+
+            $data = Http::get($link)->collect();
+            $link = $data['links']['next'];
         }
     }
 }

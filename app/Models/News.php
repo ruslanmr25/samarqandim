@@ -7,10 +7,11 @@ use App\Http\Traits\ExtraModelMethods;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
 {
-    use HasFactory, ExtraModelMethods;
+    use HasFactory, ExtraModelMethods,SoftDeletes;
 
 
 
@@ -30,7 +31,7 @@ class News extends Model
         'body_en',
         'body_ru',
         'body_kr',
-        'status',
+        
         'views',
 
     ];
