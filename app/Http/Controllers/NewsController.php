@@ -59,7 +59,6 @@ class NewsController extends Controller
         $news->images()
             ->create(['path' => $request->imagePath]);
 
-        Log::channel('custom')->info("News yaratildi. NewsID: {$news->id} AuthorId: {$request->user()->id}. News TitleUz: {$request->title_uz}");
         return $this->success();
     }
 
@@ -98,8 +97,6 @@ class NewsController extends Controller
             'path' => $request->imagePath
         ]);
 
-        Log::channel('custom')->info("News Update qilindi. NewsID: {$news->id} UpdaterId: {$request->user()->id}. News titleUz {$request->titleUz}");
-
 
         return $this->success();
     }
@@ -111,13 +108,12 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        $file_path = substr($news->images()->first()->path, strpos($news->images()->first()->path, '/', 1));
+        // $file_path = substr($news->images()->first()->path, strpos($news->images()->first()->path, '/', 1));
 
-        if (Storage::disk('public')->exists($file_path)) {
+        // if (Storage::disk('public')->exists($file_path)) {
 
-            Storage::disk('public')->delete($file_path);
-        }
-        Log::channel('custom')->info("News o'chirildi. NewsID: {$news->id} UpdaterId: {user}. News titleUz {$news->titleUz}", ['user' => auth()->user()->id]);
+        //     Storage::disk('public')->delete($file_path);
+        // }
 
         $news->delete();
         return $this->success();

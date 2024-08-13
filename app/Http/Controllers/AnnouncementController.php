@@ -71,12 +71,12 @@ class AnnouncementController extends Controller
     public function destroy(Announcement $announcement)
     {
 
-        $file_path = substr($announcement->imagePath, strpos($announcement->imagePath, '/', 1));
+        // $file_path = substr($announcement->imagePath, strpos($announcement->imagePath, '/', 1));
 
-        if (Storage::disk('public')->exists($file_path)) {
+        // if (Storage::disk('public')->exists($file_path)) {
 
-            Storage::disk('public')->delete($file_path);
-        }
+        //     Storage::disk('public')->delete($file_path);
+        // }
         $announcement->delete();
         return $this->success();
     }

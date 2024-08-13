@@ -67,17 +67,12 @@ class SlideController extends Controller
     public function destroy(Slide $slide)
     {
 
+        // $file_path = substr($slide->imagePath, strpos($slide->imagePath, '/', 1));
 
+        // if (Storage::disk('public')->exists($file_path)) {
 
-
-
-
-        $file_path = substr($slide->imagePath, strpos($slide->imagePath, '/', 1));
-
-        if (Storage::disk('public')->exists($file_path)) {
-
-            Storage::disk('public')->delete($file_path);
-        }
+        //     Storage::disk('public')->delete($file_path);
+        // }
         $slide->delete();
         return $this->success();
     }

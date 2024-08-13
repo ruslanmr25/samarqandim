@@ -22,8 +22,15 @@ class StoreAnnouncementRequest extends FormRequest
     public function rules(): array
     {
         return [
-       
+
             'imagePath' => 'required|string',
+            'descriptionUz' => 'nullable|max:300',
+            'descriptionKr' => 'nullable|max:300',
+            'descriptionEn' => 'nullable|max:300',
+            'descriptionRu' => 'nullable|max:300'
+
+
+
         ];
     }
 
