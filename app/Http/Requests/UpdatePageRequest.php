@@ -22,7 +22,8 @@ class UpdatePageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "menu" => 'required|exists:menus,path',
+            'titleUz' => 'required'
         ];
     }
 
@@ -30,16 +31,17 @@ class UpdatePageRequest extends FormRequest
     public function prepareForValidation()
     {
         $data = [
-            'name_en' => $this->nameEn,
-            'name_uz' => $this->nameUz,
-            'name_ru' => $this->nameRu,
-            'name_kr' => $this->nameKr,
-            'level' => $this->level,
-            'parent_id' => $this->parentId,
-            'path' => $this->path,
-            'external_link' => $this->externalLink,
-        ];
 
+            'menu_id' => $this->menuId,
+            'title_uz' => $this->titleUz,
+            'title_en' => $this->titleEn,
+            'title_ru' => $this->titleRu,
+            'title_kr' => $this->titleKr,
+            'body_uz' => $this->bodyUz,
+            'body_en' => $this->bodyEn,
+            'body_ru' => $this->bodyRu,
+            'body_kr' => $this->bodyKr,
+        ];
         $filteredData = array_filter($data, function ($value) {
             return !is_null($value);
         });

@@ -23,7 +23,7 @@ class StoreMenuRequest extends FormRequest
     {
         return [
             'nameEn' => 'nullable|string',
-            'nameUz' => 'nullable|string',
+            'nameUz' => 'required|string',
             'nameRu' => 'nullable|string',
             'nameKr' => 'nullable|string',
             'level' => 'required|integer|min:1',

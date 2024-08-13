@@ -24,6 +24,7 @@ class UpdateAnnouncementRequest extends FormRequest
         return [
             'status' => 'boolean',
             'imagePath' => 'required|string',
+            'titleUz' => 'required'
         ];
     }
 

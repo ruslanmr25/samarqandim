@@ -24,7 +24,7 @@ class StoreAnnouncementRequest extends FormRequest
         return [
 
             'imagePath' => 'required|string',
-            'descriptionUz' => 'nullable|max:300',
+            'descriptionUz' => 'required|max:300',
             'descriptionKr' => 'nullable|max:300',
             'descriptionEn' => 'nullable|max:300',
             'descriptionRu' => 'nullable|max:300'

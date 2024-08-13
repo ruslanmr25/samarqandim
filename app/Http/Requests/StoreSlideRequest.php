@@ -30,13 +30,14 @@ class StoreSlideRequest extends FormRequest
     {
         return [
 
-            'imagePath' => 'required'
+            'imagePath' => 'required',
+            'titleUz' => 'required'
         ];
     }
 
     public function prepareForValidation()
     {
-        $this->merge([
+        $data = [
 
             "title_uz" => $this->titleUz,
             'title_en' => $this->titleEn,
@@ -48,6 +49,11 @@ class StoreSlideRequest extends FormRequest
             'description_kr' => $this->descriptionKr,
 
 
-        ]);
+        ];
+        $filteredData = array_filter($data, function ($value) {
+            return !is_null($value);
+        });
+
+        $this->merge($filteredData);
     }
 }

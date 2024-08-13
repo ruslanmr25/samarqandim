@@ -22,33 +22,32 @@ class UpdateSlideRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imagePath' => 'required'
-      
+            'imagePath' => 'required',
+            'titleUz' => 'required'
+
         ];
     }
 
 
     public function prepareForValidation()
     {
-        if ($this->titleUz) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
-        if ($this->titleEn) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
-        if ($this->titleRu) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
-        if ($this->titleKr) {
-            $this->merge([
-                'title_uz' => $this->titleUz
-            ]);
-        }
+        $data = [
+
+            "title_uz" => $this->titleUz,
+            'title_en' => $this->titleEn,
+            'title_ru' => $this->titleRu,
+            'title_kr' => $this->titleKr,
+            'description_uz' => $this->descriptionUz,
+            'description_en' => $this->descriptionEn,
+            'description_ru' => $this->descriptionRu,
+            'description_kr' => $this->descriptionKr,
+
+
+        ];
+        $filteredData = array_filter($data, function ($value) {
+            return !is_null($value);
+        });
+
+        $this->merge($filteredData);
     }
 }

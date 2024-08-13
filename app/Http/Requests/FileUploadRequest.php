@@ -28,7 +28,7 @@ class FileUploadRequest extends FormRequest
         return [
 
 
-            "file" => "required|file|max:10000",
+            "file" => "required|file|max:10",
         ];
     }
 }

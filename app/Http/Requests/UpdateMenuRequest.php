@@ -35,6 +35,7 @@ class UpdateMenuRequest extends FormRequest
             'path' => 'missing',
             'externalLink' => 'nullable|string',
             'priority' => 'required|int',
+            'nameUz' => 'required'
 
         ];
     }

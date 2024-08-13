@@ -35,6 +35,7 @@ class StorePageRequest extends FormRequest
     {
         return [
             "menu" => 'required|exists:menus,path',
+            'titleUz' => 'required'
         ];
     }
 
