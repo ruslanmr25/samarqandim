@@ -155,7 +155,7 @@ class MenuSeeder extends Seeder
             array('id' => '72', 'name_uz' => 'O\'quv ishlari bo\'yicha prorektor', 'name_en' => 'Vice Rector for Academic Affairs', 'name_ru' => 'Ўқув ишлари бўйича проректор', 'name_kr' => 'Проректор по учебной работе', 'level' => '3', 'path' => 'vice_rector_for_academic_affairs', 'parent_id' => '8', 'external_link' => NULL, 'priority' => '3', 'created_at' => '2024-08-13 15:22:22', 'updated_at' => '2024-08-13 15:22:22')
         );
 
-
+        
         foreach ($menus as $menu) {
             Menu::create($menu);
         }

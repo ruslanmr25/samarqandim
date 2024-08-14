@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Slide extends Model
 {
-    use HasFactory, ExtraModelMethods,SoftDeletes;
+    use HasFactory, ExtraModelMethods, SoftDeletes;
 
 
     protected $fillable = [
@@ -18,7 +18,7 @@ class Slide extends Model
         'title_ru',
         'title_kr',
         'imagePath',
-       
+        'path',
         'description_kr',
         'description_ru',
         'description_en',

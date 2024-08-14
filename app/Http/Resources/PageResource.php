@@ -20,7 +20,7 @@ class PageResource extends JsonResource
             "body" => $this->body_uz ?? $this->body_en ?? $this->body_kr ?? $this->body_ru,
             "createdAt" => $this->created_at,
 
-            
+
             $this->mergeWhen($request->lang == 'all', [
                 'titleUz' => $this->title_uz,
                 'titleRu' => $this->title_ru,
@@ -29,7 +29,7 @@ class PageResource extends JsonResource
                 'bodyUz' => $this->body_uz,
                 'bodyRu' => $this->body_ru,
                 'bodyEn' => $this->body_en,
-                'bodyKr' => $this->body_ru,
+                'bodyKr' => $this->body_kr,
 
             ])
         ];

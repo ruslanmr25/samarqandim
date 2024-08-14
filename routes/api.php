@@ -123,23 +123,4 @@ Route::apiResource('permissions', PermissionController::class)->only('index');
 
 
 
-Route::get('/get-news', function () {
-    $url = "http://172.16.4.97:8001/api";
-
-
-    $data = Http::get($url)->collect();
-
-    $link = $data['links']['next'];
-
-
-    while ($link != null) {
-        $newsCollection = $data['data'];
-
-        foreach ($newsCollection as $newsObject) {
-
-            $news = $newsObject['news'];
-            $image = $newsObject['image'];
-        }
-    }
-});
 //

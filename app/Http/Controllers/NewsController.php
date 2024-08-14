@@ -72,10 +72,12 @@ class NewsController extends Controller
     public function show($news, NewsFilter $filter)
     {
         $news = News::FindByLang($news, $filter)->load(['images']);
+        News::withoutEvents(function () use ($news) {
 
-        $news->update([
-            'views' => $news->views + 1
-        ]);
+            $news->update([
+                'views' => $news->views + 1
+            ]);
+        });
 
         return
             $this->resource(

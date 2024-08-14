@@ -40,7 +40,7 @@ class NewsResource extends JsonResource
                 'bodyUz' => $this->body_uz,
                 'bodyRu' => $this->body_ru,
                 'bodyEn' => $this->body_en,
-                'bodyKr' => $this->body_ru,
+                'bodyKr' => $this->body_kr,
 
             ])
 

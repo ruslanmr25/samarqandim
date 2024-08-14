@@ -34,7 +34,7 @@ class AnnouncementResource extends JsonResource
                 'bodyUz' => $this->body_uz,
                 'bodyRu' => $this->body_ru,
                 'bodyEn' => $this->body_en,
-                'bodyKr' => $this->body_ru,
+                'bodyKr' => $this->body_kr,
                 'descriptionUz' => $this->description_uz,
                 'descriptionRu' => $this->description_ru,
                 'descriptionEn' => $this->description_en,
