@@ -5,15 +5,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\SlideController;
-use App\Http\Controllers\MenuController;
+
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\PageController;
+
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserPermissionController;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 
@@ -70,24 +67,6 @@ Route::post("/upload/{type}", [FileUploadController::class, "store"]);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//                             Menu Rooutes                                                   //
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-Route::apiResource("menus", MenuController::class);
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-//                             Page Rooutes                                                   //
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-Route::get("pages/{menu:path}", [PageController::class, 'show']);
-
-Route::post("pages", [PageController::class, 'store']);
-
-Route::put("pages/{menu:path}", [PageController::class, 'update']);
-
-////////////////////////////////////////////////////////////////////////////////////////////////
 //                             Slide Rooutes                                                  //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -120,7 +99,3 @@ Route::apiResource('permissions', PermissionController::class)->only('index');
 
 // Route::post('permissions/assign', [UserPermissionController::class, 'assignPermssion']);
 // Route::post('permissions/remove', [UserPermissionController::class, 'removePermission']);
-
-
-
-//

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,8 +41,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             NewsCategorySeeder::class,
-            MenuSeeder::class,
-            PageSeeder::class,
+
             PermissionSeeder::class,
             RoleSeeder::class,
             NewsSeeder::class,
