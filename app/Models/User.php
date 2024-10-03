@@ -49,72 +49,17 @@ class User extends Authenticatable
 
 
 
-    public function permissions()
-    {
 
-        return $this->belongsToMany(Permission::class, 'user_permission');
-    }
 
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_role');
+
+        
     }
 
+    ########################################## addding log#########################################
 
-    protected static function booted()
-    {
-        static::created(function ($model) {
 
-            Log::channel('custom')->info(
-                self::class . " Create. Id:{id} User: {user} Permisssions {permissions}  ",
-                [
-                    'id' => $model->id,
-                    'user' => auth()->user()->username,
-                    'userId' => auth()->user()->id,
 
-                    'permissions' => $model->permissions()->pluck('id'),
-
-                ]
-            );
-        });
-        static::updated(function ($model) {
-
-            $original = $model->getOriginal();
-            $keys = $model->getDirty();
-            $changes = $model->getChanges();
-
-            $changedValues = array_map(
-                function ($key) use ($original, $changes) {
-                    return [
-                        'old' => $original[$key] ?? null,
-                        'new' => $changes[$key],
-                    ];
-                },
-                array_keys($changes)
-            );
-
-            // Log yozish
-            Log::channel('custom')->info(
-                self::class . " Update .  Id:{id} User: {user} ,Permissions {permisssions}",
-                [
-                    'model_id' => $model->id,
-                    'user' => auth()->user()->username,
-                    'userId' => auth()->user()->id,
-                    'permissions' => $model->permissions()->pluck('id'),
-                    'changedValues' => $changedValues,
-
-                ]
-            );
-        });
-        static::deleted(function ($model) {
-            Log::channel('custom')->warning(
-                self::class . " Delete.  Id:{id} User: {user}  ",
-                [
-                    'id' => $model->id,
-                    'user' => auth()->user()->username,
-                    'userId' => auth()->user()->id,
-                ]
-            );
-        });
-    }
 }

@@ -31,6 +31,6 @@ class ProfileController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        return $this->resource(new UserResource($user->load('permissions')));
+        return $this->resource(new UserResource($user));
     }
 }

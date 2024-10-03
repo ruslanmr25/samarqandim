@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
 {
-    use HasFactory, ExtraModelMethods,SoftDeletes;
+    use HasFactory, ExtraModelMethods, SoftDeletes;
 
 
 
@@ -26,13 +26,17 @@ class News extends Model
         'title_uz',
         'title_en',
         'title_ru',
-        'title_kr',
+
         'body_uz',
         'body_en',
         'body_ru',
-        'body_kr',
-        
-        'views',
+
+        "description_uz",
+        "description_ru",
+
+        "description_en"
+
+
 
     ];
 

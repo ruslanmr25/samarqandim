@@ -23,16 +23,14 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:sanctum');
-        $this->middleware('permission:user')->except('personalDetails');
-
-        $this->middleware('checkDSA')->only('destroy');
+        $this->middleware("role:superAdmin");
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return  new UserCollection(User::with('permissions')->get());
+        return  new UserCollection(User::with("roles")->get());
     }
 
     /**
@@ -41,16 +39,19 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
 
-        $user = User::create([
+        User::create([
             'username' => $request->username,
             'fullname' => $request->fullname,
             'email' => $request->email,
             'password' => Hash::make($request->password)
 
-        ]);
-        $user->permissions()->sync($request->permissions);
+        ])->roles()->sync($request->roles);
 
-        return $this->resource(new UserResource($user->load("permissions")));
+
+
+
+
+        return $this->success();
     }
 
     /**
@@ -59,7 +60,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         return $this->resource(
-            new UserResource($user->load('permissions'))
+            new UserResource($user->load('roles'))
         );
     }
 

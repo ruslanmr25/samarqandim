@@ -17,15 +17,18 @@ return new class extends Migration
             $table->string("title_uz", 1000)->nullable();
             $table->string("title_en", 1000)->nullable();
             $table->string("title_ru", 1000)->nullable();
-            $table->string("title_kr", 1000)->nullable();
+
             $table->longText("body_uz")->nullable();
             $table->longText("body_en")->nullable();
             $table->longText("body_ru")->nullable();
-            $table->longText("body_kr")->nullable();
+
+            $table->string("description_uz", 500)->nullable();
+            $table->string("description_en", 500)->nullable();
+            $table->string("description_ru", 500)->nullable();
 
 
-           
-            $table->integer("views")->default(0);
+
+
             $table->softDeletes();
 
 

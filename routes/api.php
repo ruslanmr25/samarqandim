@@ -70,7 +70,7 @@ Route::post("/upload/{type}", [FileUploadController::class, "store"]);
 //                             Slide Rooutes                                                  //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::apiResource("slides", SlideController::class);
+// Route::apiResource("slides", SlideController::class);
 
 
 
@@ -83,19 +83,3 @@ Route::get('profile', [ProfileController::class, 'profile']);
 Route::put('profile', [ProfileController::class, 'update']);
 
 Route::apiResource('users', UserController::class);
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-//                             Permission Rooutes                                             //
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-Route::apiResource('permissions', PermissionController::class)->only('index');
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-//                           Manage user Permission Rooutes                                   //
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// Route::post('permissions/assign', [UserPermissionController::class, 'assignPermssion']);
-// Route::post('permissions/remove', [UserPermissionController::class, 'removePermission']);

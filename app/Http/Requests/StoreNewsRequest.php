@@ -36,7 +36,8 @@ class StoreNewsRequest extends FormRequest
         return [
             'categoryId' => 'required|exists:news_categories,id|integer',
             'imagePath' => 'required|string',
-            'titleUz' => 'required'
+            'titleUz' => 'required',
+            "descriptionUz" => 'required|max:500'
 
 
         ];
@@ -51,11 +52,18 @@ class StoreNewsRequest extends FormRequest
             "title_uz" => $this->titleUz,
             'title_en' => $this->titleEn,
             'title_ru' => $this->titleRu,
-            'title_kr' => $this->titleKr,
+
             'body_uz' => $this->bodyUz,
             'body_en' => $this->bodyEn,
             'body_ru' => $this->bodyRu,
-            'body_kr' => $this->bodyKr,
+
+
+            "description_uz" => $this->descriptionUz,
+            "description_ru" => $this->descriptionRu,
+
+            "description_en" => $this->descriptionEn,
+
+
             'category_id' => $this->categoryId
 
         ];

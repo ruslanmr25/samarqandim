@@ -42,9 +42,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NewsCategorySeeder::class,
 
-            PermissionSeeder::class,
             RoleSeeder::class,
-            NewsSeeder::class,
+            // NewsSeeder::class,
         ]);
     }
 }

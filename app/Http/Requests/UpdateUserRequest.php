@@ -31,8 +31,7 @@ class UpdateUserRequest extends FormRequest
             'email' => "required|string|email|unique:users,email,{$userId},id",
             'fullname' => 'required|string',
             'password' => 'required|min:6',
-            'permissions' => 'required|array',
-            'permissions.*' => 'required|int|exists:permissions,id'
+
         ];
     }
 }
