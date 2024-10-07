@@ -21,7 +21,7 @@ class BaseFilter
     protected array $generalColumns = [];
     protected array $ColumnsDependOnLang = [];
 
-    protected array $langs = ['uz', 'ru', 'kr', 'en', 'all'];
+    protected array $langs = ['uz', 'ru',  'en', 'all'];
 
     protected array $guardedMethod = ['apply', 'select', 'addLangToColumn', 'setLanguage', 'primary'];
 

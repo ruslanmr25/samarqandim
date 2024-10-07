@@ -2,7 +2,7 @@
 
 namespace App\Http\Filter;
 
-class AnnouncementFilter extends BaseFilter
+class ArticleFilter extends BaseFilter
 {
 
     protected array $generalColumns = ['id',  'created_at', 'updated_at', 'imagePath'];

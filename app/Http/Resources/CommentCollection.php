@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class AnnouncementCollection extends ResourceCollection
+class CommentCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,6 +15,7 @@ class AnnouncementCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
+
 
             "success" => true,
             "message" => "The operation was done successfully!",
@@ -30,7 +31,8 @@ class AnnouncementCollection extends ResourceCollection
         ];
     }
 
-     /**
+
+    /**
      * Customize the pagination information for the resource.
      *
      * @param  \Illuminate\Http\Request  $request

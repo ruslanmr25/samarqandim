@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAnnouncementRequest extends FormRequest
+class StoreCommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,34 +22,35 @@ class UpdateAnnouncementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status' => 'boolean',
-            'imagePath' => 'required|string',
-            'titleUz' => 'required'
+            "imagePath" => "required|string"
         ];
     }
 
-
-
-    public function prepareForValidation()
+    public function prepareForValidation(): void
     {
         $data = [
-            'title_uz' => $this->titleUz,
-            'title_en' => $this->titleEn,
-            'title_ru' => $this->titleRu,
-            'title_kr' => $this->titleKr,
-            'description_uz' => $this->descriptionUz,
-            'description_en' => $this->descriptionEn,
-            'description_ru' => $this->descriptionRu,
-            'description_kr' => $this->descriptionKr,
+
+            "person_uz" => $this->personUz,
+            'person_en' => $this->personEn,
+            'person_ru' => $this->personRu,
+
             'body_uz' => $this->bodyUz,
             'body_en' => $this->bodyEn,
             'body_ru' => $this->bodyRu,
-            'body_kr' => $this->bodyKr,
+
+
+            "description_uz" => $this->descriptionUz,
+            "description_ru" => $this->descriptionRu,
+
+            "description_en" => $this->descriptionEn,
+
+            "image_path" => $this->imagePath,
+
+
 
         ];
 
-        // Null qiymatlarni olib tashlash
-        $filteredData = array_filter($data, function ($value) {
+        $filteredData = array_filter($data, function ($value): bool {
             return !is_null($value);
         });
 

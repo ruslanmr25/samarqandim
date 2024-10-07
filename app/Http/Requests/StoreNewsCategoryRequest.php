@@ -22,7 +22,9 @@ class StoreNewsCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+           
         ];
     }
+
+
 }

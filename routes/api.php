@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\SlideController;
@@ -37,6 +39,15 @@ Route::post('/enter', [AuthController::class, 'login']);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
+//                             Comments Rooutes                                               //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Route::apiResource("/comments", CommentController::class);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 //                             News Rooutes                                                   //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,7 +65,7 @@ Route::apiResource("news", NewsController::class);
 
 
 
-Route::apiResource("announcements", AnnouncementController::class);
+Route::apiResource("articles", ArticleController::class);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
