@@ -6,19 +6,21 @@ use App\Http\Filter\SlideFilter;
 use App\Models\Slide;
 use App\Http\Requests\StoreSlideRequest;
 use App\Http\Requests\UpdateSlideRequest;
+use App\Http\Resources\SlideCollection;
+use App\Http\Resources\SlideResource;
 
 class SlideController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:sanctum', 'permission:slide'])->only(['store', 'update', 'destroy']);
+        $this->middleware(['auth:sanctum'])->only(['store', 'update', 'destroy']);
     }
     /**
      *  Get all slides
      * @queryParam status Sign of active or unactive Enum:1,0   No-example
      * @queryParam lang Enum:uz,kr,en,ru
      */
-    public function index(SlideFilter $filter)
+    public function index(SlideFilter $filter): SlideCollection
     {
         $slides = Slide::filter($filter)->get();
 

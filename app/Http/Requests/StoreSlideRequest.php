@@ -11,7 +11,7 @@ class StoreSlideRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -39,7 +39,7 @@ class StoreSlideRequest extends FormRequest
             'description_uz' => $this->descriptionUz,
             'description_en' => $this->descriptionEn,
             'description_ru' => $this->descriptionRu,
-
+            "image_path" => $this->imagePath,
 
 
         ];

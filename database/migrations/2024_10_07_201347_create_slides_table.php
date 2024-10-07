@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
-            $table->string("path");
+           
             $table->string("title_uz", 1000)->nullable();
             $table->string("title_en", 1000)->nullable();
             $table->string("title_ru", 1000)->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string("description_en", 1000)->nullable();
             $table->string("description_ru", 1000)->nullable();
             $table->string("description_kr", 1000)->nullable();
-            $table->string("imagePath", 1000);
+            $table->string("image_path", 1000);
 
             $table->timestamps();
             $table->softDeletes();

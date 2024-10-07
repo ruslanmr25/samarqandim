@@ -36,7 +36,7 @@ class UpdateSlideRequest extends FormRequest
             "title_uz" => $this->titleUz,
             'title_en' => $this->titleEn,
             'title_ru' => $this->titleRu,
-
+            "image_path" => $this->imagePath,
             'description_uz' => $this->descriptionUz,
             'description_en' => $this->descriptionEn,
             'description_ru' => $this->descriptionRu,

@@ -18,6 +18,7 @@ class FileUploadController extends Controller
     public array  $types = [
         "news",
         "comments",
+        "slides"
 
     ];
 

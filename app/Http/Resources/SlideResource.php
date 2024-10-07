@@ -20,8 +20,8 @@ class SlideResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title_uz ?? $this->title_ru ?? $this->title_en,
             'description' => $this->description_uz ??  $this->description_ru ?? $this->description_en,
-            'path' => $this->path,
-            'imagePath' => $this->imagePath,
+
+            'imagePath' => $this->image_path,
             $this->mergeWhen($request->lang == 'all', [
                 'titleUz' => $this->title_uz,
                 'titleRu' => $this->title_ru,
