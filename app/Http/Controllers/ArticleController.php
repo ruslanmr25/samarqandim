@@ -40,7 +40,6 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         Article::create($request->all());
-
         return $this->success();
     }
 
