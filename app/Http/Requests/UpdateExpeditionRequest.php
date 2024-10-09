@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSlideRequest extends FormRequest
+class UpdateExpeditionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,15 @@ class UpdateSlideRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imagePath' => 'required',
-            'titleUz' => 'required'
+
+            'imagePath' => 'required|string',
+            'titleUz' => 'required',
+            "descriptionUz" => 'required|max:500'
+
 
         ];
     }
+
 
 
     public function prepareForValidation()
@@ -36,14 +40,22 @@ class UpdateSlideRequest extends FormRequest
             "title_uz" => $this->titleUz,
             'title_en' => $this->titleEn,
             'title_ru' => $this->titleRu,
-            "image_path" => $this->imagePath,
-            'description_uz' => $this->descriptionUz,
-            'description_en' => $this->descriptionEn,
-            'description_ru' => $this->descriptionRu,
+
+            'body_uz' => $this->bodyUz,
+            'body_en' => $this->bodyEn,
+            'body_ru' => $this->bodyRu,
+
+
+            "description_uz" => $this->descriptionUz,
+            "description_ru" => $this->descriptionRu,
+
+            "description_en" => $this->descriptionEn,
+
 
 
 
         ];
+
         $filteredData = array_filter($data, function ($value) {
             return !is_null($value);
         });

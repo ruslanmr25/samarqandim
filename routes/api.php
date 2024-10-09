@@ -4,6 +4,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ExpeditionController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\SlideController;
@@ -72,9 +73,14 @@ Route::apiResource("articles", ArticleController::class);
 //                               Slides       Rooutes                                         //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 Route::apiResource("slides", SlideController::class);
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                               Expeditions       Rooutes                                         //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::apiResource("expeditions", ExpeditionController::class);
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //                             Upload file Rooutes                                            //

@@ -7,27 +7,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Comment extends Model
+class Expedition extends Model
 {
-    use HasFactory,ExtraModelMethods,SoftDeletes;
+    use HasFactory,SoftDeletes,ExtraModelMethods;
+
 
 
     protected $fillable = [
-        "person_uz",
-        "person_ru",
-        "person_en",
-        "description_ru",
-        "description_en",
-        "description_uz",
+        'title_uz',
+        'title_en',
+        'title_ru',
+
         'body_uz',
         'body_en',
         'body_ru',
-        "image_path"
 
+        "description_uz",
+        "description_ru",
+
+        "image_path",
+        "description_en"
 
     ];
-
-
-
-
 }

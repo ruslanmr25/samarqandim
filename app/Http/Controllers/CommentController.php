@@ -24,7 +24,7 @@ class CommentController extends Controller
     public function index(CommentFilter $filter)
     {
         return new CommentCollection(
-            Comment::filter($filter, ["body"])->latest()->paginate($filter->perPage)
+            Comment::filter($filter)->latest()->paginate($filter->perPage)
         );
     }
 
