@@ -28,6 +28,8 @@ return new class extends Migration
             $table->text("body_ru")->nullable();
 
 
+            // $table->boolean("isf")
+
 
 
             $table->string("image_path");

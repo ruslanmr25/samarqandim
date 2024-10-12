@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ExpeditionController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SlideController;
 
 use App\Http\Controllers\NewsController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\Route;
 
 
@@ -61,13 +63,21 @@ Route::apiResource("news-categories", NewsCategoryController::class)
 Route::apiResource("news", NewsController::class);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//                               Announcement Rooutes                                         //
+//                               Articles     Rooutes                                         //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 Route::apiResource("articles", ArticleController::class);
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                               Gallery Content Rooutes                                      //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+Route::apiResource("gallery/{type}/contents", GalleryController::class);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //                               Slides       Rooutes                                         //
