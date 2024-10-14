@@ -24,7 +24,8 @@ class UpdateArticleRequest extends FormRequest
         return [
             'status' => 'boolean',
             'imagePath' => 'required|string',
-            'titleUz' => 'required'
+            'titleUz' => 'required',
+            'descriptionUz' => 'required'
         ];
     }
 
@@ -40,12 +41,9 @@ class UpdateArticleRequest extends FormRequest
             'description_uz' => $this->descriptionUz,
             'description_en' => $this->descriptionEn,
             'description_ru' => $this->descriptionRu,
-            'description_kr' => $this->descriptionKr,
             'body_uz' => $this->bodyUz,
             'body_en' => $this->bodyEn,
             'body_ru' => $this->bodyRu,
-            'body_kr' => $this->bodyKr,
-
         ];
 
         // Null qiymatlarni olib tashlash

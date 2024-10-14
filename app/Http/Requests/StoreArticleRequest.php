@@ -25,7 +25,7 @@ class StoreArticleRequest extends FormRequest
 
             'imagePath' => 'required|string',
             'descriptionUz' => 'required|max:300',
-            'descriptionKr' => 'nullable|max:300',
+            
             'descriptionEn' => 'nullable|max:300',
             'descriptionRu' => 'nullable|max:300'
 

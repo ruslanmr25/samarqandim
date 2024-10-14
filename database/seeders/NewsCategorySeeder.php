@@ -15,10 +15,7 @@ class NewsCategorySeeder extends Seeder
     {
         $categories = [
             "common",
-            "scientific_activity",
-            "international_relations",
-            "cultural_and_educational_activity",
-            "financial_activity",
+
             "top",
 
         ];

@@ -23,7 +23,7 @@ class FileUploadController extends Controller
         "comments",
         "slides",
         "articles",
-        "expedition",
+        "expeditions",
         "photo",
         "vedio"
 
