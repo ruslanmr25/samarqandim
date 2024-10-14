@@ -44,6 +44,7 @@ class UpdateExpeditionRequest extends FormRequest
             'body_uz' => $this->bodyUz,
             'body_en' => $this->bodyEn,
             'body_ru' => $this->bodyRu,
+            "image_path" => $this->imagePath,
 
 
             "description_uz" => $this->descriptionUz,
