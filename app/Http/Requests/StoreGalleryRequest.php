@@ -40,7 +40,7 @@ class StoreGalleryRequest extends FormRequest
             'title_ru' => $this->titleRu,
             "content_path" => $this->contentPath,
 
-            "type" => $this->type
+     
 
 
 

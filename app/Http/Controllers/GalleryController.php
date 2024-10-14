@@ -7,6 +7,8 @@ use App\Models\Gallery;
 use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
 use App\Http\Resources\GalleryContentCollection;
+use App\Http\Resources\GalleryContentResource;
+use Illuminate\Mail\Mailables\Content;
 
 class GalleryController extends Controller
 {
@@ -16,7 +18,7 @@ class GalleryController extends Controller
     public function __construct()
     {
 
-        $this->middleware(["auth:sanctum"])->except("index");
+        $this->middleware(["auth:sanctum"])->except(["index", "show"]);
     }
     /**
      * Display a listing of the resource.
@@ -32,7 +34,7 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGalleryRequest $request, $type)
+    public function store(StoreGalleryRequest $request)
     {
 
         Gallery::create($request->all());
@@ -43,20 +45,26 @@ class GalleryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Gallery $gallery)
+    public function show($content, GalleryContentFilter $filter)
     {
-        //
+        $content = Gallery::FindByLang($content, $filter);
+
+
+        return
+            $this->resource(
+                new GalleryContentResource($content)
+            );
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGalleryRequest $request, $type,  $gallery)
+    public function update(UpdateGalleryRequest $request,  $content)
     {
 
 
-        Gallery::findOrFail($gallery)->update($request->all());
+        Gallery::findOrFail($content)->update($request->all());
 
 
         return $this->success();
@@ -65,12 +73,11 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($type,  $gallery)
+    public function destroy(Gallery  $content)
     {
+        $content->delete();
 
-        Gallery::findOrFail($gallery)->delete();
 
-
-        $this->success();
+        return $this->success();
     }
 }

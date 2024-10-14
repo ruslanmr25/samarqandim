@@ -20,6 +20,7 @@ class GalleryContentResource extends JsonResource
             "title" => $this->title_uz ?? $this->title_en  ?? $this->title_ru,
 
             "contentPath" => $this->content_path,
+            "type" => $this->type,
             "createdAt" => $this->created_at,
 
             $this->mergeWhen($request->lang == 'all', [

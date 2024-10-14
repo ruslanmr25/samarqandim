@@ -40,9 +40,6 @@ class UpdateGalleryRequest extends FormRequest
             'title_ru' => $this->titleRu,
             "content_path" => $this->contentPath,
 
-            "type" => $this->type
-
-
 
         ];
 

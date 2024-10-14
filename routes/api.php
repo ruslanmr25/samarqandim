@@ -77,7 +77,7 @@ Route::apiResource("articles", ArticleController::class);
 
 
 
-Route::apiResource("gallery/{type}/contents", GalleryController::class);
+Route::apiResource("gallery/contents", GalleryController::class);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //                               Slides       Rooutes                                         //
@@ -100,12 +100,6 @@ Route::apiResource("expeditions", ExpeditionController::class);
 
 Route::post("/upload/{type}", [FileUploadController::class, "store"]);
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-//                             Slide Rooutes                                                  //
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Route::apiResource("slides", SlideController::class);
 
 
 
