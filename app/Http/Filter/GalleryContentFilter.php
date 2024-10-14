@@ -17,7 +17,10 @@ class GalleryContentFilter extends BaseFilter
 
     ];
 
-    public function primary()
+    public function primary() {}
+
+
+    public function type()
     {
         $this->builder->where("type", $this->request->type);
     }

@@ -37,7 +37,7 @@ class StoreNewsRequest extends FormRequest
             'categoryId' => 'required|exists:news_categories,id|integer',
             'imagePath' => 'required|string',
             'titleUz' => 'required',
-            "descriptionUz" => 'required|max:500'
+       
 
 
         ];

@@ -26,7 +26,7 @@ class StoreGalleryRequest extends FormRequest
             "titleUz" => "required",
 
             "contentPath" => "required|string",
-            "type" => "required|in:photo,vedio"
+            "type" => "required|in:photo,video"
         ];
     }
 
@@ -40,7 +40,7 @@ class StoreGalleryRequest extends FormRequest
             'title_ru' => $this->titleRu,
             "content_path" => $this->contentPath,
 
-     
+
 
 
 
@@ -56,7 +56,7 @@ class StoreGalleryRequest extends FormRequest
     public function messages()
     {
         return [
-            "type.in" => "type must be photo or vedio"
+            "type.in" => "type must be photo or video"
         ];
     }
 }

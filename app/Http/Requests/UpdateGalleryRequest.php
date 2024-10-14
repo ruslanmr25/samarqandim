@@ -26,7 +26,7 @@ class UpdateGalleryRequest extends FormRequest
             "titleUz" => "required",
 
             "contentPath" => "required|string",
-            "type" => "required|in:photo,vedio"
+            "type" => "required|in:photo,video"
         ];
     }
 
@@ -53,7 +53,7 @@ class UpdateGalleryRequest extends FormRequest
     public function messages()
     {
         return [
-            "type.in" => "type must be photo or vedio"
+            "type.in" => "type must be photo or video"
         ];
     }
 }
